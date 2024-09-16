@@ -15,7 +15,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "monolog/monolog": "^3.7"
+        "monolog/monolog": "^3.7",
+        "fakerphp/faker": "^1.23"
     },
     "require-dev": {
         "symfony/var-dumper": "^7.1"
