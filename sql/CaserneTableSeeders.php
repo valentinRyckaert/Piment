@@ -42,11 +42,12 @@ for($i = 20; $i < 80; $i++){
     ));
 }
 
-$SQL = "insert into grades value (:CodeGrade, :nomGrade, :CoefIndem);)"
-    for($i = 20; $i < 80; $i++){
-        $preparedStatement = $cnx->prepare($SQL);
+$SQL = "insert into grades value (:CodeGrade, :nomGrade, :CoefIndem);";
+for($i = 20; $i < 80; $i++){
+    $preparedStatement = $cnx->prepare($SQL);
         $preparedStatement->execute(array(
             "CodeGrade" => "$i",
             "nomGrade" => $faker->lastName(),
-            "CoefIndem" => $faker->randomLetter(),
-            }
+            "CoefIndem" => $faker->randomLetter()
+        ));
+}
