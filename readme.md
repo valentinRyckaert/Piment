@@ -9,7 +9,7 @@ composer install
 
 Se connecter à la base de données mariadb :
 ```bash
-mariadb -P 3306 -u root -p < dump-pompiers.sql
+mariadb -P 3306 -u root -p < ./sql/dump-pompiers.sql
 ```
 
 entrer le mot de passe root.
@@ -18,5 +18,5 @@ entrer le mot de passe root.
 
 Executer le script php :
 ```bash
-php scider.php 
+php ./sql/scider.php 
 ```
