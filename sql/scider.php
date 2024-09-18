@@ -51,3 +51,13 @@ for($i = 20; $i < 80; $i++){
             "CoefIndem" => $faker->randomLetter()
         ));
 }
+/*
+$SQL = "insert into pompiers_dispos value (:matricule, :jjmmaaaa, :heure);";
+for($i = 20; $i < 80; $i++){
+    $preparedStatement = $cnx->prepare($SQL);
+    $preparedStatement->execute(array(
+        "matricule" => "$i",
+        "jjmmaaaa" => $faker->date(),
+        "heure" => $faker->time()
+    ));
+}*/

@@ -18,9 +18,14 @@
 --
 -- Table structure for table `casernes`
 --
-create database if not exists `pompiers`;
 
+
+create database if not exists `pompiers`;
 use `pompiers`;
+
+create user if not exists `pompier_user` IDENTIFIED BY '123+aze';
+grant create, select, update, delete, drop on `pompiers`.* to `pompier_user`;
+FLUSH PRIVILEGES;
 
 DROP TABLE IF EXISTS `casernes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
