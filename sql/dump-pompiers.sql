@@ -18,8 +18,6 @@
 --
 -- Table structure for table `casernes`
 --
-
-
 create database if not exists `pompiers`;
 use `pompiers`;
 
@@ -31,14 +29,14 @@ DROP TABLE IF EXISTS `casernes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `casernes` (
-  `NumCaserne` int(11) NOT NULL,
-  `Adresse` varchar(15) DEFAULT NULL,
-  `CP` varchar(5) DEFAULT NULL,
-  `Ville` varchar(20) DEFAULT NULL,
-  `CodeTypeC` int(11) DEFAULT NULL,
-  PRIMARY KEY (`NumCaserne`),
-  KEY `FK_typeC` (`CodeTypeC`),
-  CONSTRAINT `FK_typeC` FOREIGN KEY (`CodeTypeC`) REFERENCES `typecasernes` (`CodeTypeC`)
+    `NumCaserne` int(11) NOT NULL,
+    `Adresse` varchar(60) DEFAULT NULL,
+    `CP` varchar(5) DEFAULT NULL,
+    `Ville` varchar(20) DEFAULT NULL,
+    `CodeTypeC` int(11) DEFAULT NULL,
+    PRIMARY KEY (`NumCaserne`),
+    KEY `FK_typeC` (`CodeTypeC`),
+    CONSTRAINT `FK_typeC` FOREIGN KEY (`CodeTypeC`) REFERENCES `typecasernes` (`CodeTypeC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,12 +83,12 @@ DROP TABLE IF EXISTS `interventions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `interventions` (
-  `DateInter` date NOT NULL,
-  `NumInter` int(11) NOT NULL,
-  `TypeInter` varchar(10) DEFAULT NULL,
-  `DureeInter` int(11) DEFAULT NULL,
-  `EtatInter` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`DateInter`,`NumInter`)
+ `DateInter` date NOT NULL,
+ `NumInter` int(11) NOT NULL,
+ `TypeInter` varchar(10) DEFAULT NULL,
+ `DureeInter` int(11) DEFAULT NULL,
+ `EtatInter` varchar(10) DEFAULT NULL,
+ PRIMARY KEY (`DateInter`,`NumInter`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -112,13 +110,13 @@ DROP TABLE IF EXISTS `pompier_intervention`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pompier_intervention` (
-  `DateInter` date NOT NULL,
-  `NumInter` int(11) NOT NULL,
-  `Matricule` varchar(7) NOT NULL,
-  PRIMARY KEY (`DateInter`,`NumInter`,`Matricule`),
-  KEY `FK_Pompier3` (`Matricule`),
-  CONSTRAINT `FK_Inter` FOREIGN KEY (`DateInter`, `NumInter`) REFERENCES `interventions` (`DateInter`, `NumInter`),
-  CONSTRAINT `FK_Pompier3` FOREIGN KEY (`Matricule`) REFERENCES `pompiers` (`Matricule`)
+    `DateInter` date NOT NULL,
+    `NumInter` int(11) NOT NULL,
+    `Matricule` varchar(7) NOT NULL,
+    PRIMARY KEY (`DateInter`,`NumInter`,`Matricule`),
+    KEY `FK_Pompier3` (`Matricule`),
+    CONSTRAINT `FK_Inter` FOREIGN KEY (`DateInter`, `NumInter`) REFERENCES `interventions` (`DateInter`, `NumInter`),
+    CONSTRAINT `FK_Pompier3` FOREIGN KEY (`Matricule`) REFERENCES `pompiers` (`Matricule`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -140,14 +138,14 @@ DROP TABLE IF EXISTS `pompier_qualification`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pompier_qualification` (
-  `Matricule` varchar(7) NOT NULL,
-  `CodeQualif` varchar(5) NOT NULL,
-  `DateObtention` date DEFAULT NULL,
-  `DateRecyclage` date DEFAULT NULL,
-  PRIMARY KEY (`Matricule`,`CodeQualif`),
-  KEY `FK_Qualif1` (`CodeQualif`),
-  CONSTRAINT `FK_Pompier1` FOREIGN KEY (`Matricule`) REFERENCES `pompiers` (`Matricule`),
-  CONSTRAINT `FK_Qualif1` FOREIGN KEY (`CodeQualif`) REFERENCES `qualifications` (`CodeQualif`)
+     `Matricule` varchar(7) NOT NULL,
+     `CodeQualif` varchar(5) NOT NULL,
+     `DateObtention` date DEFAULT NULL,
+     `DateRecyclage` date DEFAULT NULL,
+     PRIMARY KEY (`Matricule`,`CodeQualif`),
+     KEY `FK_Qualif1` (`CodeQualif`),
+     CONSTRAINT `FK_Pompier1` FOREIGN KEY (`Matricule`) REFERENCES `pompiers` (`Matricule`),
+     CONSTRAINT `FK_Qualif1` FOREIGN KEY (`CodeQualif`) REFERENCES `qualifications` (`CodeQualif`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -169,19 +167,19 @@ DROP TABLE IF EXISTS `pompiers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pompiers` (
-  `Matricule` varchar(7) NOT NULL,
-  `Prenom` varchar(10) DEFAULT NULL,
-  `Nom` varchar(20) DEFAULT NULL,
-  `ChefAgret` varchar(1) DEFAULT NULL,
-  `DateNaissance` date DEFAULT NULL,
-  `NumCaserne` int(11) DEFAULT NULL,
-  `CodeGrade` varchar(2) DEFAULT NULL,
-  `MatriculeRespo` varchar(7) DEFAULT NULL,
-  PRIMARY KEY (`Matricule`),
-  KEY `FK_Caserne1` (`NumCaserne`),
-  KEY `FK_Grade1` (`CodeGrade`),
-  CONSTRAINT `FK_Caserne1` FOREIGN KEY (`NumCaserne`) REFERENCES `casernes` (`NumCaserne`),
-  CONSTRAINT `FK_Grade1` FOREIGN KEY (`CodeGrade`) REFERENCES `grades` (`CodeGrade`)
+    `Matricule` varchar(7) NOT NULL,
+    `Prenom` varchar(25) DEFAULT NULL,
+    `Nom` varchar(25) DEFAULT NULL,
+    `ChefAgret` varchar(1) DEFAULT NULL,
+    `DateNaissance` date DEFAULT NULL,
+    `NumCaserne` int(11) DEFAULT NULL,
+    `CodeGrade` varchar(2) DEFAULT NULL,
+    `MatriculeRespo` varchar(7) DEFAULT NULL,
+    PRIMARY KEY (`Matricule`),
+    KEY `FK_Caserne1` (`NumCaserne`),
+    KEY `FK_Grade1` (`CodeGrade`),
+    CONSTRAINT `FK_Caserne1` FOREIGN KEY (`NumCaserne`) REFERENCES `casernes` (`NumCaserne`),
+    CONSTRAINT `FK_Grade1` FOREIGN KEY (`CodeGrade`) REFERENCES `grades` (`CodeGrade`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -203,11 +201,11 @@ DROP TABLE IF EXISTS `pompiers_dispos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pompiers_dispos` (
-  `Matricule` varchar(7) NOT NULL,
-  `jjmmaaaa` date NOT NULL,
-  `hhmm` int(11) NOT NULL,
-  PRIMARY KEY (`Matricule`,`jjmmaaaa`,`hhmm`),
-  CONSTRAINT `FK_Pompier2` FOREIGN KEY (`Matricule`) REFERENCES `pompiers` (`Matricule`)
+    `Matricule` varchar(7) NOT NULL,
+    `jjmmaaaa` date NOT NULL,
+    `hhmm` int(11) NOT NULL,
+    PRIMARY KEY (`Matricule`,`jjmmaaaa`,`hhmm`),
+    CONSTRAINT `FK_Pompier2` FOREIGN KEY (`Matricule`) REFERENCES `pompiers` (`Matricule`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -229,12 +227,12 @@ DROP TABLE IF EXISTS `prerequis`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prerequis` (
-  `CodeQualifConcerne` varchar(5) NOT NULL,
-  `CodeQualifAAvoir` varchar(5) NOT NULL,
-  PRIMARY KEY (`CodeQualifConcerne`,`CodeQualifAAvoir`),
-  KEY `FK_Qualif4` (`CodeQualifAAvoir`),
-  CONSTRAINT `FK_Qualif3` FOREIGN KEY (`CodeQualifConcerne`) REFERENCES `qualifications` (`CodeQualif`),
-  CONSTRAINT `FK_Qualif4` FOREIGN KEY (`CodeQualifAAvoir`) REFERENCES `qualifications` (`CodeQualif`)
+     `CodeQualifConcerne` varchar(5) NOT NULL,
+     `CodeQualifAAvoir` varchar(5) NOT NULL,
+     PRIMARY KEY (`CodeQualifConcerne`,`CodeQualifAAvoir`),
+     KEY `FK_Qualif4` (`CodeQualifAAvoir`),
+     CONSTRAINT `FK_Qualif3` FOREIGN KEY (`CodeQualifConcerne`) REFERENCES `qualifications` (`CodeQualif`),
+     CONSTRAINT `FK_Qualif4` FOREIGN KEY (`CodeQualifAAvoir`) REFERENCES `qualifications` (`CodeQualif`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -313,9 +311,9 @@ DROP TABLE IF EXISTS `typecasernes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `typecasernes` (
-  `CodeTypeC` int(11) NOT NULL,
-  `NomType` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`CodeTypeC`)
+    `CodeTypeC` int(11) NOT NULL,
+    `NomType` varchar(15) DEFAULT NULL,
+    PRIMARY KEY (`CodeTypeC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -337,11 +335,11 @@ DROP TABLE IF EXISTS `typevehicules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `typevehicules` (
-  `CodeTypeV` varchar(5) NOT NULL,
-  `NomV` varchar(20) DEFAULT NULL,
-  `NbMinPompiers` int(11) DEFAULT NULL,
-  `KmRevision` int(11) DEFAULT NULL,
-  PRIMARY KEY (`CodeTypeV`)
+     `CodeTypeV` varchar(5) NOT NULL,
+     `NomV` varchar(20) DEFAULT NULL,
+     `NbMinPompiers` int(11) DEFAULT NULL,
+     `KmRevision` int(11) DEFAULT NULL,
+     PRIMARY KEY (`CodeTypeV`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -363,15 +361,15 @@ DROP TABLE IF EXISTS `vehicule_intervention`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vehicule_intervention` (
-  `NumCaserne` int(11) NOT NULL,
-  `NumVehicule` int(11) NOT NULL,
-  `DateInter` date NOT NULL,
-  `NumInter` int(11) NOT NULL,
-  `DureeService` int(11) DEFAULT NULL,
-  PRIMARY KEY (`NumCaserne`,`NumVehicule`,`DateInter`,`NumInter`),
-  KEY `FK_Inter2` (`DateInter`,`NumInter`),
-  CONSTRAINT `FK_Inter2` FOREIGN KEY (`DateInter`, `NumInter`) REFERENCES `interventions` (`DateInter`, `NumInter`),
-  CONSTRAINT `FK_Vehicules` FOREIGN KEY (`NumCaserne`, `NumVehicule`) REFERENCES `vehicules` (`NumCaserne`, `NumVehicule`)
+     `NumCaserne` int(11) NOT NULL,
+     `NumVehicule` int(11) NOT NULL,
+     `DateInter` date NOT NULL,
+     `NumInter` int(11) NOT NULL,
+     `DureeService` int(11) DEFAULT NULL,
+     PRIMARY KEY (`NumCaserne`,`NumVehicule`,`DateInter`,`NumInter`),
+     KEY `FK_Inter2` (`DateInter`,`NumInter`),
+     CONSTRAINT `FK_Inter2` FOREIGN KEY (`DateInter`, `NumInter`) REFERENCES `interventions` (`DateInter`, `NumInter`),
+     CONSTRAINT `FK_Vehicules` FOREIGN KEY (`NumCaserne`, `NumVehicule`) REFERENCES `vehicules` (`NumCaserne`, `NumVehicule`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -393,15 +391,15 @@ DROP TABLE IF EXISTS `vehicules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vehicules` (
-  `NumCaserne` int(11) NOT NULL,
-  `NumVehicule` int(11) NOT NULL,
-  `DateAchat` date DEFAULT NULL,
-  `NbKm` int(11) DEFAULT NULL,
-  `KmDerniereRev` int(11) DEFAULT NULL,
-  `CodeTypeV` varchar(5) DEFAULT NULL,
-  PRIMARY KEY (`NumCaserne`,`NumVehicule`),
-  KEY `FK_TypeV1` (`CodeTypeV`),
-  CONSTRAINT `FK_TypeV1` FOREIGN KEY (`CodeTypeV`) REFERENCES `typevehicules` (`CodeTypeV`)
+     `NumCaserne` int(11) NOT NULL,
+     `NumVehicule` int(11) NOT NULL,
+     `DateAchat` date DEFAULT NULL,
+     `NbKm` int(11) DEFAULT NULL,
+     `KmDerniereRev` int(11) DEFAULT NULL,
+     `CodeTypeV` varchar(5) DEFAULT NULL,
+     PRIMARY KEY (`NumCaserne`,`NumVehicule`),
+     KEY `FK_TypeV1` (`CodeTypeV`),
+     CONSTRAINT `FK_TypeV1` FOREIGN KEY (`CodeTypeV`) REFERENCES `typevehicules` (`CodeTypeV`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -429,3 +427,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-10-15 15:36:19
+

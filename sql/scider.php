@@ -32,8 +32,8 @@ for($i = 20; $i < 80; $i++){
     $preparedStatement = $cnx->prepare($SQL);
     $preparedStatement->execute(array(
         "matricule" => "$i",
-        "prenom" => $faker->lastName(),
-        "nom" => $faker->firstName(),
+        "prenom" => $faker->firstName(),
+        "nom" => $faker->lastName(),
         "chefAgret" => $faker->randomLetter(),
         "dateNaissance" => $faker->date(),
         "numCaserne" => $faker->numberBetween(20,40),
@@ -48,16 +48,16 @@ for($i = 20; $i < 80; $i++){
         $preparedStatement->execute(array(
             "CodeGrade" => "$i",
             "nomGrade" => $faker->lastName(),
-            "CoefIndem" => $faker->randomLetter()
+            "CoefIndem" => $faker->randomDigit()
         ));
 }
-/*
+
 $SQL = "insert into pompiers_dispos value (:matricule, :jjmmaaaa, :heure);";
 for($i = 20; $i < 80; $i++){
     $preparedStatement = $cnx->prepare($SQL);
     $preparedStatement->execute(array(
         "matricule" => "$i",
         "jjmmaaaa" => $faker->date(),
-        "heure" => $faker->time()
+        "heure" => $faker->randomDigit()
     ));
-}*/
+}
