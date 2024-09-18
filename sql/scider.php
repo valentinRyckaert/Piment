@@ -4,7 +4,7 @@ require '../vendor/autoload.php';
 
 
 $faker = Faker\Factory::create('fr_FR');
-$cnx = new PDO("mysql:host=127.0.0.1;dbname=pompiers","pompier_user","123+aze");
+$cnx = \piment\utils\SingletonDatabaseMariaDB::getInstance();
 
 $SQL = "insert into typecasernes values (:codeTypeC, :nomType);";
 for($i = 20; $i < 50; $i++){
