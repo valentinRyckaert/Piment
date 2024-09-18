@@ -6,7 +6,9 @@ class SingletonConfigReader {
     private static SingletonConfigReader $instance;
     private array $data=[];
 
-
+    /**
+     * Constructor
+     */
     private function __construct(){
         $this->data=parse_ini_file("config.ini", true);
     }
@@ -23,7 +25,7 @@ class SingletonConfigReader {
     }
 
     /**
-     * Return the value associated to a key in a section
+     * Return the information about config.ini
      * @param string $key
      * @param string|null $section
      * @return string|null

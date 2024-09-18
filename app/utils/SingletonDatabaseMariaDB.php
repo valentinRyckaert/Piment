@@ -23,7 +23,7 @@ class SingletonDatabaseMariaDB {
 
     /**
      * Create if not exist a new instance
-     * @param $instance
+     * @param SingletonDatabaseMariaDB $instance
      * @return SingletonDatabaseMariaDB
      */
     public static function getInstance(): SingletonDatabaseMariaDB {
@@ -35,7 +35,7 @@ class SingletonDatabaseMariaDB {
 
     /**
      * return the PDO function
-     * @return \PDO
+     * @return $this->cnx
      */
     public function getCnx(): \PDO {
         return $this->cnx;
