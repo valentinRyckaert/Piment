@@ -5,10 +5,17 @@ class SingletonConfigReader {
     private static SingletonConfigReader $instance;
     private $data=[];
 
+    /**
+     *
+     */
     private function __construct(){
         //TODO : lecture du fichier config.ini et stockage en memoire de $data
     }
 
+    /**
+     * Return the information about config.ini
+     * @return SingletonConfigReader
+     */
     public static function getInstance() : SingletonConfigReader {
         if(!isset(self::$instance)){
             self::$instance = new SingletonConfigReader();
