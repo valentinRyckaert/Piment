@@ -6,9 +6,7 @@ class SingletonConfigReader {
     private static SingletonConfigReader $instance;
     private array $data=[];
 
-    /**
-     *
-     */
+
     private function __construct(){
         $this->data=parse_ini_file("config.ini", true);
     }

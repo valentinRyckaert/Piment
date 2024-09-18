@@ -10,6 +10,7 @@ class SingletonDatabaseMariaDB {
 
     /**
      * Connection to the database
+     * @param $data
      */
     private function __construct() {
         $data = SingletonConfigReader::getInstance();
@@ -21,7 +22,8 @@ class SingletonDatabaseMariaDB {
     }
 
     /**
-     *
+     * Create if not exist a new instance
+     * @param $instance
      * @return SingletonDatabaseMariaDB
      */
     public static function getInstance(): SingletonDatabaseMariaDB {
@@ -31,6 +33,10 @@ class SingletonDatabaseMariaDB {
         return self::$instance;
     }
 
+    /**
+     * return the PDO function
+     * @return \PDO
+     */
     public function getCnx(): \PDO {
         return $this->cnx;
     }
