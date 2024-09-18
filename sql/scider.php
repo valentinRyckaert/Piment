@@ -4,7 +4,7 @@ require '../vendor/autoload.php';
 
 
 $faker = Faker\Factory::create('fr_FR');
-$cnx = \piment\utils\SingletonDatabaseMariaDB::getInstance();
+$cnx = \piment\utils\SingletonDatabaseMariaDB::getInstance()->getCnx();
 
 $SQL = "insert into typecasernes values (:codeTypeC, :nomType);";
 for($i = 20; $i < 50; $i++){
