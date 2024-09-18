@@ -1,12 +1,13 @@
 <?php
+
 namespace piment\utils;
 
 class SingletonConfigReader {
     private static SingletonConfigReader $instance;
-    private $data=[];
+    private array $data=[];
 
     private function __construct(){
-        //TODO : lecture du fichier config.ini et stockage en memoire de $data
+        $this->data=parse_ini_file("config.ini", true);
     }
 
     public static function getInstance() : SingletonConfigReader {
@@ -24,11 +25,9 @@ class SingletonConfigReader {
      */
     public function getValue(string $key, string $section=null) : ?string {
         if($section==null){
-
+            return $this->data[$key];
         } else {
-
+            return $this->data[$section][$key];
         }
-        return;
     }
-
 }

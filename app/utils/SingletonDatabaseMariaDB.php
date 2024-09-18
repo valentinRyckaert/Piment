@@ -5,11 +5,16 @@ namespace piment\utils;
 // TODO : ajouter les annotations
 
 class SingletonDatabaseMariaDB {
-    private PDO $cnx;
+    private \PDO $cnx;
     private static SingletonDatabaseMariaDB $instance;
 
     private function __construct() {
-        $this->cnx = new PDO("mysql:host=127.0.0.1;dbname=pompiers","pompier_user","123+aze");
+        $data = SingletonConfigReader::getInstance();
+        $this->cnx = new \PDO(
+            "mysql:host={$data->getValue("host","mariadb")};dbname={$data->getValue("dbname","mariadb")}",
+            $data->getValue("user","mariadb"),
+            $data->getValue("password","mariadb")
+        );
     }
     public static function getInstance(): SingletonDatabaseMariaDB {
         if (!isset(self::$instance)) {
@@ -18,7 +23,7 @@ class SingletonDatabaseMariaDB {
         return self::$instance;
     }
 
-    public function getCnx(): PDO {
+    public function getCnx(): \PDO {
         return $this->cnx;
     }
 }

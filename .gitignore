@@ -2,3 +2,4 @@ vendor
 public_html/draft.php
 storage/*
 .idea
+app/utils/config.ini
