@@ -6,8 +6,8 @@ abstract class DAO {
     /* @var $cnx <PDO> */
     protected $cnx;
 
-    public function __construct($cnx) {
-        //TODO
+    public function __construct($uneCnx) {
+        $this->cnx = $uneCnx;
     }
     public abstract function find($id) ;
 
