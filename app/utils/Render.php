@@ -6,7 +6,7 @@ class Render
 {
     $path = ""; // TODO cf __DIR__
     
-    if(SinglletonconfigReader::getInstance()->getValue("debug") == "true"){
+    if (SinglletonconfigReader::getInstance()->getValue("debug") == "true"){
         set_error_handler('self::error_handler');
     }
     public static render(string $page, array $data=null) : ?string {

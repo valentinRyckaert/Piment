@@ -1,6 +1,6 @@
 <?php
 
-namespace piment\models; 
+namespace piment\models;
 
 class DAOPompiers extends DAO {
 
