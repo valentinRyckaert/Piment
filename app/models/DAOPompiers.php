@@ -63,21 +63,21 @@ class DAOPompiers extends DAO {
     $preparedStatement = $this->cnx->prepare($SQL);
     $preparedStatement->execute();
         $data = $preparedStatement->fetchAll(\PDO::FETCH_ASSOC);
-        $pompers = [];
+        $pompier = [];
         foreach ($data as $row) {
-            $pompiers = new Caserne();
+            $pompiers = new pompier();
             foreach ($row as $key => $value) {
                 $setter = 'set' . ucfirst($key);
                 if (method_exists($pompiers, $setter)) {
                     $pompiers->$setter($value);
                 }
             }
-            $pompiers[] = $pompiers;
+            $pompier[] = $pompiers;
         }
-        return $pompers;
+        return $pompier;
     }
     public function count(): int {
-        $SQL = "SELECT COUNT(*) FROM pompier";
+        $SQL = "SELECT COUNT(*) FROM pompiers";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->execute();
         return $preparedStatement->fetch();

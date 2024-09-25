@@ -1,7 +1,7 @@
 <?php
 namespace piment\models;
 
-class pompiers
+class pompier
 {
     private $Matricule;
     private $Prenom;
