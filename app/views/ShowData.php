@@ -7,8 +7,7 @@
     <title>ShowData</title>
   </head>
   <body>
-  <div class="row mb-5">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5" style="background-color: #e3f2fd;">
           <div class="container-fluid">
               <a class="navbar-brand" href="#">Navbar</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,32 +43,31 @@
               </div>
           </div>
       </nav>
-  </div>
-  <div class="col-4">
-      <table class="table table-striped border border-2">
-          <thead>
-          <tr>
-              <th scope="col">#</th>
-              <th scope="col">Adresse</th>
-              <th scope="col">CP</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-          </tr>
-          </thead>
-          <tbody>
-          <?php
-          foreach($lesCasernes as $laCaserne) {
-              echo "<tr>";
-              echo "<th scope='row'>" . $laCaserne->getNumCaserne() . "</th>";
-              echo "<td>" . $laCaserne->getAdresse() . "</td>";
-              echo "<td>" . $laCaserne->getCP() . "</td>";
-              echo "<td><button class='btn btn-primary'>edit</button></td>";
-              echo "<td><button class='btn btn-danger'>delete</button></td>";
-              echo "</tr>";
-          }
-          ?>
-          </tbody>
-      </table>
-  </div>
+      <div class="col-4">
+          <table class="table table-striped border border-2">
+              <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Adresse</th>
+                  <th scope="col">CP</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <?php
+                  foreach($lesCasernes as $laCaserne) {
+                      echo "<tr>";
+                      echo "<th scope='row'>" . $laCaserne->getNumCaserne() . "</th>";
+                      echo "<td>" . $laCaserne->getAdresse() . "</td>";
+                      echo "<td>" . $laCaserne->getCP() . "</td>";
+                      echo "<td><button class='btn btn-primary'>edit</button></td>";
+                      echo "<td><button class='btn btn-danger'>delete</button></td>";
+                      echo "</tr>";
+                  }
+              ?>
+              </tbody>
+          </table>
+      </div>
   </body>
 </html>
