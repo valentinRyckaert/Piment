@@ -28,7 +28,7 @@ class Render {
             return;
         }
 
-        if(error_reporting() & $severity) {
+        if (error_reporting() & $severity) {
             throw new \ErrorException($message, 0, $severity, $filename, $line);
         }
     }
