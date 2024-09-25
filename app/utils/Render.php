@@ -16,7 +16,7 @@ class Render {
         if($data!==null) {
             extract($data);
         }
-        include_once $path;
+        include_once $page;
         
         $content = ob_get_contents();
         ob_clean();
