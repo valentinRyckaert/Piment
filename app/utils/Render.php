@@ -8,7 +8,7 @@ class Render {
     public static function render(string $page, array $data=null) : ?string {
 
         if (SingletonconfigReader::getInstance()->getValue("debug") == "true"){
-            set_error_handler(self::errror_handler());
+            set_error_handler(self::error_handler());
         }
 
         ob_start();
@@ -22,8 +22,8 @@ class Render {
         return $content;
     }
 
-    private static function  errror_handler($severity, $message, $filename, $linenum) {
-        if(errror_reporting() == 0) {
+    private static function  error_handler($severity, $message, $filename, $linenum) {
+        if(error_reporting() == 0) {
             return;
         }
     }
