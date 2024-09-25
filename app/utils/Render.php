@@ -1,31 +1,36 @@
 <?php
-
 namespace piment\utils;
-use \piment\utils\SingletonConfigReader;
+use piment\utils\SingletonConfigReader;
 
 class Render {
-    private $path = __DIR__ . "/views";
 
-    public static function render(string $page, array $data=null) : ?string {
+    public static function render($view, array $data=null): ?string {
 
-        if (SingletonconfigReader::getInstance()->getValue("debug") == "true"){
-            set_error_handler(self::error_handler());
+        $path = dirname(__DIR__) . '/views/' . $view . '.php';
+        if(SingletonConfigReader::getInstance()->getValue('debug')) {
+            set_error_handler([self::class, 'error_Handler']);
         }
-
         ob_start();
-        if($data!==null) {
+        if ($data != null) {
             extract($data);
         }
-        include_once $page;
-        
+
+        include_once $path;
+
         $content = ob_get_contents();
         ob_clean();
         return $content;
+
     }
 
-    private static function  error_handler($severity, $message, $filename, $linenum) {
-        if(error_reporting() == 0) {
+    private static function error_Handler($severity, $message, $filename, $line) {
+        if (error_reporting( )==0){
             return;
         }
+
+        if(error_reporting() & $severity) {
+            throw new \ErrorException($message, 0, $severity, $filename, $line);
+        }
     }
+
 }
