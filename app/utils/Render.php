@@ -1,6 +1,7 @@
 <?php
 
 namespace piment\utils;
+use \piment\utils\SingletonConfigReader;
 
 class Render {
     private $path = __DIR__ . "/views";
@@ -12,7 +13,7 @@ class Render {
         }
 
         ob_start();
-        if($data==null) {
+        if($data!==null) {
             extract($data);
         }
         include_once $path;
