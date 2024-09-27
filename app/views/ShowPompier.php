@@ -62,21 +62,21 @@
           </thead>
           <tbody>
           <?php
-          foreach($lespompiers as $lepompier) {
-              echo "<tr>";
-              echo "<th scope='row'>" . $lepompier->getMatricule() . "</th>";
-              echo "<td>" . $lepompier->getPrenom() . "</td>";
-              echo "<td>" . $lepompier->getNom() . "</td>";
-              echo "<td>" . $lepompier->getChefAgret() . "</td>";
-              echo "<td>" . $lepompier->getDateNaissance() . "</td>";
-              echo "<td>" . $lepompier->getNumCaserne() . "</td>";
-              echo "<td>" . $lepompier->getCodeGrade() . "</td>";
-              echo "<td>" . $lepompier->getMatriculerespo() . "</td>";
-              echo "<td><button class='btn btn-primary'>edit</button></td>";
-              echo "<td><button class='btn btn-danger'>delete</button></td>";
-              echo "</tr>";
-          }
-          ?>
+          /** @var $lespompiers array<\piment\models\pompier> */
+          foreach($lespompiers as $lepompier) { ?>
+              <tr>
+                  <th scope='row'>$lepompier->getMatricule()</th>
+                  <td><?= $lepompier->getPrenom() ?></td>
+                  <td><?= $lepompier->getNom() ?></td>
+                  <td><?= $lepompier->getChefAgret() ?></td>
+                  <td><?= $lepompier->getDateNaissance() ?></td>
+                  <td><?= $lepompier->getNumCaserne() ?></td>
+                  <td><?= $lepompier->getCodeGrade() ?></td>
+                  <td><?= $lepompier->getMatriculerespo() ?></td>
+                  <td><button class='btn btn-primary'>edit</button></td>
+                  <td><button class='btn btn-danger'>delete</button></td>
+              </tr>
+          <?php } ?>
           </tbody>
       </table>
   </div>

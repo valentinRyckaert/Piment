@@ -56,16 +56,16 @@
               </thead>
               <tbody>
               <?php
-                  foreach($lesCasernes as $laCaserne) {
-                      echo "<tr>";
-                      echo "<th scope='row'>" . $laCaserne->getNumCaserne() . "</th>";
-                      echo "<td>" . $laCaserne->getAdresse() . "</td>";
-                      echo "<td>" . $laCaserne->getCP() . "</td>";
-                      echo "<td><button class='btn btn-primary'>edit</button></td>";
-                      echo "<td><button class='btn btn-danger'>delete</button></td>";
-                      echo "</tr>";
-                  }
-              ?>
+              /** @var $lesCasernes array<\piment\models\Caserne> */
+              foreach($lesCasernes as $laCaserne) { ?>
+                      <tr>
+                          <th scope='row'><?= $laCaserne->getNumCaserne() ?></th>
+                          <td><?= $laCaserne->getAdresse() ?></td>
+                          <td><?= $laCaserne->getCP() ?></td>
+                          <td><button class='btn btn-primary'>edit</button></td>
+                          <td><button class='btn btn-danger'>delete</button></td>
+                      </tr>
+              <?php } ?>
               </tbody>
           </table>
       </div>
