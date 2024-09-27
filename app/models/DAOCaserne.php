@@ -76,8 +76,10 @@ class DAOCaserne extends DAO {
      * @return array
      */
     public function findAll(int $offset = 0, int $limit = 1024): array {
-        $SQL = "select * from casernes";
+        $SQL = "select * from casernes limit :limit offset :offset";
         $preparedStatement = $this->cnx->prepare($SQL);
+        $preparedStatement->bindValue(":limit", $limit, \PDO::PARAM_INT);
+        $preparedStatement->bindValue(":offset", $offset, \PDO::PARAM_INT);
         $preparedStatement->execute();
         $data = $preparedStatement->fetchAll(\PDO::FETCH_ASSOC);
         $casernes = [];
