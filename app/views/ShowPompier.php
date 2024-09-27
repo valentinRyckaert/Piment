@@ -48,8 +48,13 @@
           <thead>
           <tr>
               <th scope="col">#</th>
-              <th scope="col">Adresse</th>
-              <th scope="col">CP</th>
+              <th scope="col">Prenom</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Chef Agret</th>
+              <th scope="col">Date de naissance</th>
+              <th scope="col">Numéro caserne</th>
+              <th scope="col">code grade</th>
+              <th scope="col">Matricule</th>
               <th scope="col"></th>
               <th scope="col"></th>
           </tr>

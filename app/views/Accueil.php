@@ -44,9 +44,13 @@
     </div>
 </nav>
 <div class="row mx-5">
-    <form action="draft.php" method="POST">
+    <form class="col" action="draft.php" method="POST">
         <input type="hidden" name="page" value="casernes">
         <button type="submit" class="btn btn-primary">Casernes</button>
+    </form>
+    <form class="col" action="draft.php" method="POST">
+        <input type="hidden" name="page" value="pompiers">
+        <button type="submit" class="btn btn-primary">Pompiers</button>
     </form>
 </div>
 </body>
