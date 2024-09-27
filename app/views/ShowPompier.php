@@ -64,7 +64,7 @@
           /** @var $lespompiers array<\piment\models\pompier> */
           foreach($lespompiers as $lepompier) { ?>
               <tr>
-                  <th scope='row'>$lepompier->getMatricule()</th>
+                  <th scope='row'><?= $lepompier->getMatricule() ?></th>
                   <td><?= $lepompier->getPrenom() ?></td>
                   <td><?= $lepompier->getNom() ?></td>
                   <td><?= $lepompier->getChefAgret() ?></td>
