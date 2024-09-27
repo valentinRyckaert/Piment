@@ -1,5 +1,7 @@
 <?php
 
+namespace piment\controllers;
+
 use piment\models\DAOCaserne;
 use piment\utils\SingletonDatabaseMariaDB;
 use piment\utils\Render;
@@ -23,7 +25,7 @@ class CaserneController extends BaseController {
      * show all casernes, based on page number and items per page
      * @return void
      */
-    public function show() {
+    public function show() : string {
         $page = $_GET['page'];
         $items = $_GET['items'];
         return $this->caserneRender->render($page,$items);

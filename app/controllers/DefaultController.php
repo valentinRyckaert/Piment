@@ -1,5 +1,7 @@
 <?php
 
+namespace piment\controllers;
+
 class DefaultController extends BaseController {
 
     public function __construct() {
