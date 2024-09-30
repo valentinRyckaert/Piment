@@ -59,11 +59,11 @@ class DAOPompiers extends DAO {
     ));
     }
     public function findAll(int $offset = 0, int $limit = 1024): array {
-    $SQL = "SELECT * FROM pompiers limit :limit offset :offset";
-    $preparedStatement->bindValue(":limit", $limit, \PDO::PARAM_INT);
-    $preparedStatement->bindValue(":offset", $offset, \PDO::PARAM_INT);
-    $preparedStatement = $this->cnx->prepare($SQL);
-    $preparedStatement->execute();
+        $SQL = "SELECT * FROM pompiers limit :limit offset :offset";
+        $preparedStatement = $this->cnx->prepare($SQL);
+        $preparedStatement->bindValue(":limit", $limit, \PDO::PARAM_INT);
+        $preparedStatement->bindValue(":offset", $offset, \PDO::PARAM_INT);
+        $preparedStatement->execute();
         $data = $preparedStatement->fetchAll(\PDO::FETCH_ASSOC);
         $pompier = [];
         foreach ($data as $row) {
