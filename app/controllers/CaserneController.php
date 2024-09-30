@@ -28,7 +28,7 @@ class CaserneController extends BaseController {
     public function show() : string {
         $page = $_GET['page'];
         $items = $_GET['items'];
-        return $this->caserneRender->render("ShowCasernes",["lesCasernes"=>$this->DAOcaserne->findAll($page*$items,$page*$items+$items)]);
+        return $this->caserneRender->render("ShowCasernes",["lesCasernes"=>$this->DAOcaserne->findAll($page*$items,$items)]);
     }
 
     public function update() {
