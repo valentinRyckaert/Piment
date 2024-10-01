@@ -75,7 +75,7 @@ class DAOCaserne extends DAO {
      * @param int $limit
      * @return array
      */
-    public function findAll(int $offset = 0, int $limit = 1024): array {
+    public function findAll(int $offset=0, int $limit=1024): array {
         $SQL = "select * from casernes limit :limit offset :offset";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue(":limit", $limit, \PDO::PARAM_INT);

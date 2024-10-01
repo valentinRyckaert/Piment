@@ -8,8 +8,8 @@ class DefaultController extends BaseController {
         parent::__construct();
     }
 
-    public function index() {
-        return \piment\utils\Render::render("Accueil");
+    public function show() : void {
+        echo \piment\utils\Render::render("Accueil");
     }
 
 }

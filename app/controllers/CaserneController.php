@@ -23,12 +23,16 @@ class CaserneController extends BaseController {
 
     /**
      * show all casernes, based on page number and items per page
-     * @return string
+     * @return void
      */
-    public function show() : string {
-        $page = $_GET['page'];
-        $items = $_GET['items'];
-        return $this->caserneRender->render("ShowCasernes",["lesCasernes"=>$this->DAOcaserne->findAll($page*$items,$items)]);
+    public function show() {
+        $page = isset($_GET['page']) ? $_GET['page'] : 0;
+        $items = isset($_GET['items']) ? $_GET['items'] : 1024;
+        echo $this->caserneRender->render("ShowCasernes",["lesCasernes"=>$this->DAOcaserne->findAll($page*$items,$items)]);
+    }
+
+    public function detail($id) {
+        echo $this->caserneRender->render("ShowOneCaserne",["laCaserne"=>$this->DAOcaserne->find($id)]);
     }
 
     public function update() {

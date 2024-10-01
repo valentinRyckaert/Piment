@@ -5,6 +5,10 @@
 //https://openclassrooms.com/fr/courses/2078536-developpez-votre-site-web-avec-le-framework-symfony2-ancienne-version/2079345-le-routeur-de-symfony2
 
 //echo "<pre>" . print_r($_SERVER, true) . "<pre>";
+use piment\controllers\CaserneController;
+use piment\controllers\DefaultController;
+use piment\controllers\PompierController;
+
 require_once '../vendor/autoload.php';
 
 
@@ -56,7 +60,7 @@ switch ($control) {
     default :
     {
         //Gestion du probleme
-        echo "Erreur URL";
+        echo "Erreur URL ";
     }
 }
 
@@ -80,7 +84,7 @@ function pompierRoutes_get($fragments)
         {
             //http://127.0.0.1:8080/pompier/show/5?p=25&a=12
             //echo "Calling pompierController->show <hr>";
-            call_user_func_array([ new PompierController(), "showAll"], $fragments);
+            call_user_func_array([ new PompierController(), "show"], $fragments);
             break;
         }
         case "demo" :
@@ -95,13 +99,13 @@ function pompierRoutes_get($fragments)
         {
             //echo "Calling pompierController->del <hr>";
             //Access permission can be checked here too
-            call_user_func_array([new \app\controllers\PompierController(), "delete"], $fragments);
+            call_user_func_array([new PompierController(), "delete"], $fragments);
             break;
         }
         case "edit" :
         {
             //echo "Calling pompierController->del <hr>";
-            call_user_func_array([new \app\controllers\PompierController(), "edit"], $fragments);
+            call_user_func_array([new PompierController(), "edit"], $fragments);
             break;
         }
 
@@ -120,12 +124,12 @@ function pompierRoutes_post($fragments)
     switch ($action) {
         case "delete":
             //Access permission can be checked here too
-            call_user_func_array([new \app\controllers\PompierController(), "do_delete"], $fragments);
+            call_user_func_array([new PompierController(), "do_delete"], $fragments);
             break;
         case "update" :
             //echo "Action '$action' ready <hr>";
             //Access permission can be checked here too
-            call_user_func_array([new \app\controllers\PompierController(), "update"], $fragments);
+            call_user_func_array([new PompierController(), "update"], $fragments);
             break;
         default:
             echo "Action '$action' non defini <hr>";
@@ -138,7 +142,7 @@ function caserneRoutes_get($fragments)
     $action = array_shift($fragments);
     switch ($action) {
         case "show":
-            call_user_func_array([new CaserneController(), "display"], $fragments);
+            call_user_func_array([new CaserneController(), "show"], $fragments);
             break;
         case "detail" :
             call_user_func_array([new CaserneController(), "detail"], $fragments);

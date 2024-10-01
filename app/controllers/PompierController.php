@@ -27,9 +27,9 @@ class PompierController extends BaseController {
      * @return string
      */
     public function show() : string {
-        $page = $_GET['page'];
-        $items = $_GET['items'];
-        return $this->PompierRender->render("ShowPompier",["lespompiers"=>$this->DAOpompiers->findAll($page*$items,$items)]);
+        $page = isset($_GET['page']) ? $_GET['page'] : 0;
+        $items = isset($_GET['items']) ? $_GET['items'] : 1024;
+        echo $this->PompierRender->render("ShowPompier",["lespompiers"=>$this->DAOpompiers->findAll($page*$items,$items)]);
     }
 
     public function update() {
