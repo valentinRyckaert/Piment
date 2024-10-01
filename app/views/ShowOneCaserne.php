@@ -1,27 +1,27 @@
 <?php require_once("_header.php"); ?>
 
-<?php /** @var $laCaserne \piment\models\Caserne */ ?>
+<?php /** @var $oneCaserne \piment\models\Caserne */ ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center bg-primary text-white">
-                    <h4>Détails de la Caserne n°<?= $laCaserne->getNumCaserne() ?></h4>
+                    <h4>Détails de la Caserne n°<?= $oneCaserne->getNumCaserne() ?></h4>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <strong>Adresse :</strong> <?= $laCaserne->getAdresse() ?>
+                            <strong>Adresse :</strong> <?= $oneCaserne->getAdresse() ?>
                         </li>
                         <li class="list-group-item">
-                            <strong>CP :</strong> <?= $laCaserne->getCP() ?>
+                            <strong>CP :</strong> <?= $oneCaserne->getCP() ?>
                         </li>
                         <li class="list-group-item">
-                            <strong>Ville :</strong> <?= $laCaserne->getVille() ?>
+                            <strong>Ville :</strong> <?= $oneCaserne->getVille() ?>
                         </li>
                         <li class="list-group-item">
-                            <strong>Type de Caserne :</strong> <?= $laCaserne->getCodeTypeC() ?>
+                            <strong>Type de Caserne :</strong> <?= $oneCaserne->getCodeTypeC() ?>
                         </li>
                     </ul>
                 </div>

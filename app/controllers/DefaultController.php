@@ -5,11 +5,11 @@ namespace piment\controllers;
 class DefaultController extends BaseController {
 
     public function __construct() {
-        parent::__construct();
+        parent::__construct(null);
     }
 
-    public function show() : void {
-        echo \piment\utils\Render::render("Accueil");
+    public function index() : void {
+        echo $this->renderer->render("Accueil");
     }
 
 }

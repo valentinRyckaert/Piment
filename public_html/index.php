@@ -13,8 +13,6 @@ require_once '../vendor/autoload.php';
 
 
 
-
-
 if (isset($_SERVER["PATH_INFO"])) {
     $path = trim($_SERVER["PATH_INFO"], "/");
 } else {
@@ -67,7 +65,7 @@ switch ($control) {
 
 function defaultRoutes_get($fragments)
 {
-    call_user_func_array([ new DefaultController(), "show"], $fragments);
+    call_user_func_array([ new DefaultController(), "index"], $fragments);
 }
 
 
@@ -92,7 +90,7 @@ function pompierRoutes_get($fragments)
             //http://127.0.0.1:8080/pompier/demo/1/45?p=2
             echo "Calling pompierController->demo_test <hr>";
             //var_dump($fragments);
-            call_user_func_array(["PompierController", "demo_test"], $fragments);
+            call_user_func_array([new PompierController(), "detail"], $fragments);
             break;
         }
         case "delete" :

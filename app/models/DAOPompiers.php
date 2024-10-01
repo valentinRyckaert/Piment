@@ -4,14 +4,14 @@ namespace piment\models;
 
 class DAOPompiers extends DAO {
 
-    public function find($id) : ?pompiers {
+    public function find($id) : ?Pompier {
         $SQL = "select * from pompiers where Matricule = :id";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue("id", $id);
         $preparedStatement->execute();
         $data = $preparedStatement->fetch(\PDO::FETCH_ASSOC);
         if ($data) {
-            $pompiers = new Pompiers();
+            $pompiers = new Pompier();
             foreach ($data as $key => $value) {
                 $setter = 'set' . ucfirst($key);
                 if (method_exists($pompiers, $setter)) {
@@ -67,7 +67,7 @@ class DAOPompiers extends DAO {
         $data = $preparedStatement->fetchAll(\PDO::FETCH_ASSOC);
         $pompier = [];
         foreach ($data as $row) {
-            $pompiers = new pompier();
+            $pompiers = new Pompier();
             foreach ($row as $key => $value) {
                 $setter = 'set' . ucfirst($key);
                 if (method_exists($pompiers, $setter)) {
