@@ -30,7 +30,6 @@ DROP TABLE IF EXISTS `casernes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `casernes` (
     `NumCaserne` int(11) NOT NULL,
-    `NomCaserne` varchar(20) DEFAULT NULL,
     `Adresse` varchar(60) DEFAULT NULL,
     `CP` varchar(5) DEFAULT NULL,
     `Ville` varchar(20) DEFAULT NULL,
@@ -40,16 +39,6 @@ CREATE TABLE `casernes` (
     CONSTRAINT `FK_typeC` FOREIGN KEY (`CodeTypeC`) REFERENCES `typecasernes` (`CodeTypeC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `casernes`
---
-
-LOCK TABLES `casernes` WRITE;
-/*!40000 ALTER TABLE `casernes` DISABLE KEYS */;
-INSERT INTO `casernes` VALUES (5,'SP','69800','Saint Priest',1),(6,'Zola','69100','Villeurbanne',1),(7,'Croix Rousse','69004','Lyon',1),(8,'Doua','69100','Doua',2),(19,'Ch','69008','Ch',3);
-/*!40000 ALTER TABLE `casernes` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `grades`
@@ -65,16 +54,6 @@ CREATE TABLE `grades` (
   PRIMARY KEY (`CodeGrade`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `grades`
---
-
-LOCK TABLES `grades` WRITE;
-/*!40000 ALTER TABLE `grades` DISABLE KEYS */;
-INSERT INTO `grades` VALUES ('1C','1ere classe',6),('AC','Adjudent chef',8),('Ad','Adjudent',8),('Ca','Caporal',7),('CC','Capo. Chef',7),('Ct','Capitaine',10),('In','Infirmier',10),('Lt','Lieutenant',10),('Ma','Major',9),('SC','Sgt Chef',8),('Sg','Sergent',8),('SP','Sapeur',6);
-/*!40000 ALTER TABLE `grades` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `interventions`
@@ -185,16 +164,6 @@ CREATE TABLE `pompiers` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `pompiers`
---
-
-LOCK TABLES `pompiers` WRITE;
-/*!40000 ALTER TABLE `pompiers` DISABLE KEYS */;
-INSERT INTO `pompiers` VALUES ('Ma0001','Ludovic','OK','N','1984-11-01',19,'SP','Ma0004'),('Ma0002','Jérémy','AR','N','1973-01-01',5,'1C','Ma0004'),('Ma0003','Arnaut','ER','N','1985-10-01',19,'SP','Ma0004'),('Ma0004','Thomas','VI','O','1973-01-10',6,'In','Ma0004'),('Ma0005','Patrice','EG','O','1973-02-04',6,'CC','Ma0004'),('Ma0006','Stéphane','BV','O','1974-05-01',19,'Sg','Ma0004'),('Ma0007','Marie','MA','N','1979-01-01',19,'Ca','Ma0004'),('Ma0008','Maxence','MI','N','1985-01-01',19,'SP','Ma0004'),('Ma0009','Max','MI','N','1985-01-01',19,'SP','Ma0004'),('Ma0010','coucou','DUPOND','N','1985-01-01',19,'SP','Ma0004'),('Ma0011','coucou2','DUPONT','N','1985-01-01',19,'SP','Ma0004');
-/*!40000 ALTER TABLE `pompiers` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `pompiers_dispos`
 --
 
@@ -210,15 +179,6 @@ CREATE TABLE `pompiers_dispos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `pompiers_dispos`
---
-
-LOCK TABLES `pompiers_dispos` WRITE;
-/*!40000 ALTER TABLE `pompiers_dispos` DISABLE KEYS */;
-INSERT INTO `pompiers_dispos` VALUES ('Ma0004','2009-03-01',12),('Ma0004','2009-03-02',12),('Ma0004','2009-03-03',12);
-/*!40000 ALTER TABLE `pompiers_dispos` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `prerequis`
@@ -317,16 +277,6 @@ CREATE TABLE `typecasernes` (
     PRIMARY KEY (`CodeTypeC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `typecasernes`
---
-
-LOCK TABLES `typecasernes` WRITE;
-/*!40000 ALTER TABLE `typecasernes` DISABLE KEYS */;
-INSERT INTO `typecasernes` VALUES (1,'Pro'),(2,'Mixte'),(3,'Volontaires');
-/*!40000 ALTER TABLE `typecasernes` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `typevehicules`
