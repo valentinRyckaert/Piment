@@ -1,6 +1,6 @@
 <?php
 
-require '../vendor/autoload.php';
+require './vendor/autoload.php';
 
 
 $faker = Faker\Factory::create('fr_FR');
@@ -15,7 +15,7 @@ for($i = 20; $i < 50; $i++){
     ));
 }
 
-$SQL = "insert into casernes values (:id, :address, :cp, :ville, :codeTypeC);";
+$SQL = "insert into casernes values (:id, :nom, :address, :cp, :ville, :codeTypeC);";
 for($i = 20; $i < 80; $i++){
     $preparedStatement = $cnx->prepare($SQL);
     $preparedStatement->execute(array(
