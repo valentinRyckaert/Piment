@@ -172,8 +172,8 @@ function caserneRoutes_post($fragments)
         case "delete" :
             call_user_func_array([new CaserneController(), "delete"], $fragments);
             break;
-        case "add" :
-            call_user_func_array([new CaserneController(), "do_add"], $fragments);
+        case "save" :
+            call_user_func_array([new CaserneController(), "do_create"], $fragments);
             break;
         default:
             break;

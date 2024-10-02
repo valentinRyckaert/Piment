@@ -49,6 +49,7 @@ abstract class BaseController {
     }
 
     public function do_create() {
+        echo 3;
         if($this->DAOName == "Pompier") {
             $object = new Pompier();
             $object->setMatricule($_POST['matricule']);
@@ -58,7 +59,7 @@ abstract class BaseController {
             $object->setNumCaserne($_POST['numCaserne']);
             $object->setCodeGrade($_POST['codeGrade']);
             $object->setMatriculeRespo($_POST['matriculeRespo']);
-        } else {
+        }else if($this->DAOName == "Caserne") {
             $object = new Caserne();
             $object->setNumCaserne($_POST['numCaserne']);
             $object->setAdresse($_POST['adresse']);
