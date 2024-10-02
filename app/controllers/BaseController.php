@@ -17,7 +17,7 @@ abstract class BaseController {
     }
 
     public function create() {
-
+        $this->renderer->render("CreateOne{$this->DAOName}");
     }
 
     /**
