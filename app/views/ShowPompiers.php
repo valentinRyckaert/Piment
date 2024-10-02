@@ -3,6 +3,9 @@
 <div class="container mt-5">
     <h1 class="text-center mb-4">Liste des Pompiers</h1>
     <p class="text-center mb-5">Découvrez les pompiers qui protègent notre communauté. Cliquez sur "Détails" pour en savoir plus sur chaque pompier.</p>
+    <div class="text-center m-5">
+        <a href="/pompier/add/"><button class="btn btn-success">Ajouter une caserne</button></a>
+    </div>
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-8">

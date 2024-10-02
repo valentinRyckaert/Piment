@@ -3,6 +3,9 @@
 <div class="container mt-5">
     <h1 class="text-center mb-4">Liste des Casernes</h1>
     <p class="text-center mb-5">Découvrez les casernes disponibles dans notre région. Cliquez sur "Détails" pour en savoir plus sur chaque caserne.</p>
+    <div class="text-center m-5">
+        <a href="/caserne/add/"><button class="btn btn-success">Ajouter une caserne</button></a>
+    </div>
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-8">

@@ -100,6 +100,11 @@ function pompierRoutes_get($fragments)
             call_user_func_array([new PompierController(), "delete"], $fragments);
             break;
         }
+        case "add" :
+        {
+            call_user_func_array([new PompierController(), "add"], $fragments);
+            break;
+        }
         case "edit" :
         {
             //echo "Calling pompierController->del <hr>";
