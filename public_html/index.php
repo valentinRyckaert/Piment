@@ -102,7 +102,7 @@ function pompierRoutes_get($fragments)
         }
         case "add" :
         {
-            call_user_func_array([new PompierController(), "add"], $fragments);
+            call_user_func_array([new PompierController(), "create"], $fragments);
             break;
         }
         case "edit" :
@@ -151,7 +151,7 @@ function caserneRoutes_get($fragments)
             call_user_func_array([new CaserneController(), "detail"], $fragments);
             break;
         case "add" :
-            call_user_func_array([new CaserneController(), "add"], $fragments);
+            call_user_func_array([new CaserneController(), "create"], $fragments);
             break;
 
         default:
