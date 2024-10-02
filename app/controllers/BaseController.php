@@ -16,8 +16,8 @@ abstract class BaseController {
         $this->renderer = new Render();
     }
 
-    public function create($data) {
-        $this->renderer->render("CreateOne{$this->DAOName}",["one{$this->DAOName}"=>$this->DAO->save($data)]);
+    public function create() {
+        $this->renderer->render("CreateOne{$this->DAOName}");
     }
 
     /**
