@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
     <h2>Créer un Pompier</h2>
-    <form action="/pompier/affiche/" method="POST">
+    <form action="/pompier/save/" method="POST">
         <div class="form-group">
             <label for="matricule">Matricule</label>
             <input type="text" class="form-control" id="matricule" name="matricule" maxlength="7" required>
@@ -12,13 +12,12 @@
             <input type="text" class="form-control" id="prenom" name="prenom" maxlength="25">
         </div>
         <div class="form-group">
-            <label for="nom">Nom</label>
-            <input type="text" class="form-control" id="nom" name="nom" maxlength="25">
-        </div>
-        <div class="form-group">
             <label for="chefAgret">Chef Agret</label>
             <input type="text" class="form-control" id="chefAgret" name="chefAgret" maxlength="1" >
-        </div>
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom" maxlength="25">
+            </div>
         <div class="form-group">
             <label for="dateNaissance">Date de Naissance</label>
             <input type="date" class="form-control" id="dateNaissance" name="dateNaissance">

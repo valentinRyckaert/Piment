@@ -9,6 +9,7 @@ use piment\controllers\CaserneController;
 use piment\controllers\DefaultController;
 use piment\controllers\PompierController;
 
+
 require_once '../vendor/autoload.php';
 
 
@@ -133,6 +134,10 @@ function pompierRoutes_post($fragments)
             //echo "Action '$action' ready <hr>";
             //Access permission can be checked here too
             call_user_func_array([new PompierController(), "update"], $fragments);
+            break;
+        case "save":
+            //Access permission can be checked here too
+            call_user_func_array([new PompierController(), "do_create"], $fragments);
             break;
         default:
             echo "Action '$action' non defini <hr>";

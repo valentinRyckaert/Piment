@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
     <h2>Créer une Caserne</h2>
-    <form action="/caserne/show/" method="POST">
+    <form action="/caserne/save/" method="POST">
         <div class="form-group">
             <label for="numCaserne">Numéro de Caserne</label>
             <input type="number" class="form-control" id="numCaserne" name="numCaserne" required>

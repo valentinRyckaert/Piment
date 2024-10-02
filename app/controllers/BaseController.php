@@ -2,6 +2,8 @@
 
 namespace piment\controllers;
 
+use piment\models\Caserne;
+use piment\models\Pompier;
 use piment\utils\Render;
 use piment\utils\SingletonDatabaseMariaDB;
 
@@ -46,8 +48,26 @@ abstract class BaseController {
 
     }
 
-    public function db_create($data) {
-
+    public function do_create() {
+        if($this->DAOName == "Pompier") {
+            $object = new Pompier();
+            $object->setMatricule($_POST['matricule']);
+            $object->setPrenom($_POST['prenom']);
+            $object->setNom($_POST['nom']);
+            $object->setDateNaissance($_POST['dateNaissance']);
+            $object->setNumCaserne($_POST['numCaserne']);
+            $object->setCodeGrade($_POST['codeGrade']);
+            $object->setMatriculeRespo($_POST['matriculeRespo']);
+        } else {
+            $object = new Caserne();
+            $object->setNumCaserne($_POST['numCaserne']);
+            $object->setAdresse($_POST['adresse']);
+            $object->setCp($_POST['cp']);
+            $object->setVille($_POST['ville']);
+            $object->setCodeTypeC($_POST['codeTypeC']);
+        }
+        $this->DAO->save($object);
+        $this->show();
     }
 
 }
