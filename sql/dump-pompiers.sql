@@ -148,8 +148,8 @@ DROP TABLE IF EXISTS `pompiers`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pompiers` (
     `Matricule` varchar(7) NOT NULL,
-    `Prenom` varchar(25) DEFAULT NULL,
-    `Nom` varchar(25) DEFAULT NULL,
+    `Prenom` varchar(175) DEFAULT NULL,
+    `Nom` varchar(175) DEFAULT NULL,
     `ChefAgret` varchar(1) DEFAULT NULL,
     `DateNaissance` date DEFAULT NULL,
     `NumCaserne` int(11) DEFAULT NULL,
