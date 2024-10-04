@@ -48,6 +48,11 @@ abstract class BaseController {
         echo $this->renderer->render("SuppressOne{$this->DAOName}",["one{$this->DAOName}"=>$this->DAO->find($id)]);
     }
 
+    public function do_delete($id) {
+        $this->DAO->delete($id);
+        $this->show();
+    }
+
     public function do_create() {
         if($this->DAOName == "Pompier") {
             $object = new Pompier();
