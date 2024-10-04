@@ -1,3 +1,4 @@
+<?php require_once("_styles.php"); ?>
 <?php /** @var $oneCaserne \piment\models\Caserne */ ?>
 
 <div class="container mt-5">

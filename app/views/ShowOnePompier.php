@@ -40,7 +40,7 @@
                 <div class="card-footer text-center">
                     <button class="btn btn-primary col-3">Editer</button>
                     <button class="btn btn-danger col-3">Supprimer</button>
-                    <a href="/pompier/affiche"><button class="btn btn-secondary col-3">Retour</button></a>
+                    <a href="/pompier/affiche"><button  type="submit" class="btn btn-secondary col-3">Retour</button></a>
                 </div>
             </div>
         </div>
