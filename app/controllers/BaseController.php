@@ -51,20 +51,20 @@ abstract class BaseController {
     public function do_create() {
         if($this->DAOName == "Pompier") {
             $object = new Pompier();
-            $object->setMatricule($_POST['matricule']);
-            $object->setPrenom($_POST['prenom']);
-            $object->setNom($_POST['nom']);
-            $object->setDateNaissance($_POST['dateNaissance']);
-            $object->setNumCaserne($_POST['numCaserne']);
-            $object->setCodeGrade($_POST['codeGrade']);
-            $object->setMatriculeRespo($_POST['matriculeRespo']);
+            $object->setMatricule(htmlspecialchars($_POST['matricule']));
+            $object->setPrenom(htmlspecialchars($_POST['prenom']));
+            $object->setNom(htmlspecialchars($_POST['nom']));
+            $object->setDateNaissance(htmlspecialchars($_POST['dateNaissance']));
+            $object->setNumCaserne(htmlspecialchars($_POST['numCaserne']));
+            $object->setCodeGrade(htmlspecialchars($_POST['codeGrade']));
+            $object->setMatriculeRespo(htmlspecialchars($_POST['matriculeRespo']));
         }else if($this->DAOName == "Caserne") {
             $object = new Caserne();
-            $object->setNumCaserne($_POST['numCaserne']);
-            $object->setAdresse($_POST['adresse']);
-            $object->setCp($_POST['cp']);
-            $object->setVille($_POST['ville']);
-            $object->setCodeTypeC($_POST['codeTypeC']);
+            $object->setNumCaserne(htmlspecialchars($_POST['numCaserne']));
+            $object->setAdresse(htmlspecialchars($_POST['adresse']));
+            $object->setCp(htmlspecialchars($_POST['cp']));
+            $object->setVille(htmlspecialchars($_POST['ville']));
+            $object->setCodeTypeC(htmlspecialchars($_POST['codeTypeC']));
         }
         $this->DAO->save($object);
         $this->show();

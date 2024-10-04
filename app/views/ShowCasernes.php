@@ -29,6 +29,9 @@
                         <td class="text-center">
                             <a href="/caserne/detail/<?= $laCaserne->getNumCaserne() ?>" class="btn btn-success">Détails</a>
                         </td>
+                        <td>
+                            <a href="/caserne/delete/<?= $laCaserne->getNumCaserne() ?>" class="btn btn-danger">Supprimer</a>
+                        </td>
                     </tr>
                 <?php } ?>
                 </tbody>

@@ -30,6 +30,7 @@
                         <td><?= $lePompier->getNumCaserne() ?></td>
                         <td class="text-center">
                             <a href="/pompier/demo/<?= $lePompier->getMatricule() ?>" class="btn btn-success">Détails</a>
+                            <a href="/pompier/delete/<?= $lePompier->getMatricule() ?>" class="btn btn-danger">Supprimer</a>
                         </td>
                     </tr>
                 <?php } ?>
