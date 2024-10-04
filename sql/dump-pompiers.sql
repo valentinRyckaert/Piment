@@ -18,6 +18,7 @@
 --
 -- Table structure for table `casernes`
 --
+drop database if exists `pompiers`;
 create database if not exists `pompiers`;
 use `pompiers`;
 
