@@ -1,12 +1,6 @@
 <!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script src="/js/bootstrap.bundle.min.js"></script>
-    <title>Piment</title>
-</head>
+<?php require_once("_styles.php"); ?>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container-fluid">
