@@ -9,7 +9,7 @@
         </div>
         <div class="form-group">
             <label for="adresse">Adresse</label>
-            <input type="text" class="form-control" id="adresse" name="adresse" maxlength="60">
+            <input type="text" class="form-control" id="adresse" name="adresse" maxlength="175">
         </div>
         <div class="form-group">
             <label for="cp">Code Postal</label>

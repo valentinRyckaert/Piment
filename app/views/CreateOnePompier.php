@@ -9,7 +9,7 @@
         </div>
         <div class="form-group">
             <label for="prenom">Prénom</label>
-            <input type="text" class="form-control" id="prenom" name="prenom" maxlength="25">
+            <input type="text" class="form-control" id="prenom" name="prenom" maxlength="175">
         </div>
         <div class="form-group">
             <label for="chefAgret">Chef Agret</label>
