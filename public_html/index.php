@@ -112,7 +112,6 @@ function pompierRoutes_get($fragments)
             call_user_func_array([new PompierController(), "edit"], $fragments);
             break;
         }
-
         default :
         {
             echo "Action '$action' non defini <hr>";
@@ -157,6 +156,9 @@ function caserneRoutes_get($fragments)
             break;
         case "add" :
             call_user_func_array([new CaserneController(), "create"], $fragments);
+            break;
+        case "delete" :
+            call_user_func_array([new CaserneController(), "delete"], $fragments);
             break;
 
         default:
