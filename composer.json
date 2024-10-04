@@ -19,13 +19,23 @@
         "fakerphp/faker": "^1.23"
     },
     "require-dev": {
-        "symfony/var-dumper": "^7.1"
+        "symfony/var-dumper": "^7.1",
+        "squizlabs/php_codesniffer": "^3.10"
     },
     "scripts" : {
         "serve" : [
             "clear",
             "Composer\\Config::disableProcessTimeout",
             "php -S127.0.0.1:8080 -t public_html"
+        ],
+        "cs" :
+        [
+            "./vendor/bin/phpcs -p --standard=PEAR --report=full app"
+        ],
+
+        "csgen" : [
+            "mkdir -p reports",
+            "./vendor/bin/phpcs -p --standard=PEAR --generator=HTML > reports/generated.html"
         ]
     }
 }
