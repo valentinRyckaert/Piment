@@ -49,7 +49,6 @@ abstract class BaseController {
     }
 
     public function do_create() {
-        echo 3;
         if($this->DAOName == "Pompier") {
             $object = new Pompier();
             $object->setMatricule($_POST['matricule']);
