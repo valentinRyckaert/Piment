@@ -30,7 +30,7 @@ DROP TABLE IF EXISTS `casernes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `casernes` (
     `NumCaserne` int(11) NOT NULL,
-    `Adresse` varchar(60) DEFAULT NULL,
+    `Adresse` varchar(175) DEFAULT NULL,
     `CP` varchar(5) DEFAULT NULL,
     `Ville` varchar(20) DEFAULT NULL,
     `CodeTypeC` int(11) DEFAULT NULL,
