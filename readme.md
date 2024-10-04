@@ -20,3 +20,4 @@ Executer le script php :
 ```bash
 php ./sql/scider.php 
 ```
+
