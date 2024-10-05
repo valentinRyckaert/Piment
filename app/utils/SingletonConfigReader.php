@@ -10,7 +10,7 @@ class SingletonConfigReader {
      * Constructor
      */
     private function __construct(){
-        $this->data=parse_ini_file("config.ini", true);
+        $this->data=parse_ini_file(__DIR__ . "/../../config.ini", true);
     }
 
     /**
