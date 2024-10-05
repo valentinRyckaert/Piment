@@ -1,6 +1,9 @@
 <?php require_once("_styles.php"); ?>
 <?php /** @var $oneCaserne \piment\models\Caserne */ ?>
 
+<div class="text-center mb-3 mt-5">
+    <h3 class="text-center">Voulez-vous supprimer cette caserne ?</h3>
+</div>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -9,7 +12,7 @@
                     <h4>Détails de la Caserne n°<?= $oneCaserne->getNumCaserne() ?></h4>
                 </div>
                 <div class="card-body">
-                    <ul class="list-group">
+                    <ul class="list-group mt-3">
                         <li class="list-group-item">
                             <strong>Adresse :</strong> <?= $oneCaserne->getAdresse() ?>
                         </li>
@@ -26,9 +29,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
-            <a href="/caserne/show"><button class="btn btn-secondary row">Annuler</button></a>
-            <a href="/caserne/show"><button class="btn btn-danger row">Supprimer</button></a>
+    </div>
+</div>
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <a href="/caserne/show">
+                <button class="btn btn-secondary">Annuler</button>
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="/caserne/delete/<?= $oneCaserne->getNumCaserne() ?>">
+                <button class="btn btn-danger">Supprimer</button>
+            </a>
         </div>
     </div>
 </div>

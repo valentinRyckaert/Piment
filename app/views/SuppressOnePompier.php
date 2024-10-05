@@ -1,7 +1,9 @@
 <?php require_once("_styles.php"); ?>
-
 <?php /** @var $onePompier \piment\models\Pompier */ ?>
 
+<div class="text-center mb-3 mt-5">
+    <h3 class="text-center">Voulez-vous supprimer cette pompier ?</h3>
+</div>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -10,7 +12,7 @@
                     <h4>Détails de <?= $onePompier->getPrenom() ?> <?= $onePompier->getNom() ?></h4>
                 </div>
                 <div class="card-body">
-                    <ul class="list-group">
+                    <ul class="list-group mt-3">
                         <li class="list-group-item">
                             <strong>Matricule :</strong> <?= $onePompier->getMatricule() ?>
                         </li>
@@ -38,10 +40,21 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-4">
-                <a href="/pompier/affiche"><button class="btn btn-secondary col-3">Annuler</button></a>
-                <a href="/pompier/affiche"><button type="submit" class="btn btn-secondary col-3">Supprimer</button></a>
-            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <a href="/pompier/affiche">
+                <button class="btn btn-secondary">Annuler</button>
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="/pompier/delete/<?= $onePompier->getMatricule() ?>">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </a>
         </div>
     </div>
 </div>

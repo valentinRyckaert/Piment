@@ -1,7 +1,7 @@
 <?php require_once("_header.php"); ?>
 
 <div class="container mt-5">
-    <h2>Créer une Caserne</h2>
+    <h2 class="mb-4">Créer une Caserne</h2>
     <form action="/caserne/save/" method="POST">
         <div class="form-group">
             <label for="numCaserne">Numéro de Caserne</label>

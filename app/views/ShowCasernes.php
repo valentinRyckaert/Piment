@@ -15,7 +15,6 @@
                     <th scope="col">#</th>
                     <th scope="col">Adresse</th>
                     <th scope="col">CP</th>
-                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,10 +25,13 @@
                         <th scope='row'><?= $laCaserne->getNumCaserne() ?></th>
                         <td><?= $laCaserne->getAdresse() ?></td>
                         <td><?= $laCaserne->getCP() ?></td>
-                        <td class="text-center">
+                        <td class="justify-content-center">
                             <a href="/caserne/detail/<?= $laCaserne->getNumCaserne() ?>" class="btn btn-success">Détails</a>
                         </td>
-                        <td>
+                        <td class="justify-content-center">
+                            <a href="#" class="btn btn-primary">éditer</a>
+                        </td>
+                        <td class="justify-content-center">
                             <a href="/caserne/delete/<?= $laCaserne->getNumCaserne() ?>" class="btn btn-danger">Supprimer</a>
                         </td>
                     </tr>

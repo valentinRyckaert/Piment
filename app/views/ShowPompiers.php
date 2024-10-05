@@ -4,7 +4,7 @@
     <h1 class="text-center mb-4">Liste des Pompiers</h1>
     <p class="text-center mb-5">Découvrez les pompiers qui protègent notre communauté. Cliquez sur "Détails" pour en savoir plus sur chaque pompier.</p>
     <div class="text-center m-5">
-        <a href="/pompier/add/"><button class="btn btn-success">Ajouter une caserne</button></a>
+        <a href="/pompier/add/"><button class="btn btn-success">Ajouter un pompier</button></a>
     </div>
 
     <div class="row justify-content-center">
@@ -16,7 +16,6 @@
                     <th scope="col">Prénom</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Numéro de Caserne</th>
-                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,8 +27,13 @@
                         <td><?= $lePompier->getPrenom() ?></td>
                         <td><?= $lePompier->getNom() ?></td>
                         <td><?= $lePompier->getNumCaserne() ?></td>
-                        <td class="text-center">
+                        <td class="justify-content-center">
                             <a href="/pompier/demo/<?= $lePompier->getMatricule() ?>" class="btn btn-success">Détails</a>
+                        </td>
+                        <td class="justify-content-center">
+                            <a href="#" class="btn btn-primary">éditer</a>
+                        </td>
+                        <td class="justify-content-center">
                             <a href="/pompier/delete/<?= $lePompier->getMatricule() ?>" class="btn btn-danger">Supprimer</a>
                         </td>
                     </tr>
