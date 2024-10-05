@@ -52,9 +52,10 @@
             </a>
         </div>
         <div class="col-md-4 text-center">
-            <a href="/pompier/delete/<?= $onePompier->getMatricule() ?>">
+            <form action="/pompier/delete/" method="post">
+                <input type="hidden" name="id" value="<?= $onePompier->getMatricule() ?>">
                 <button type="submit" class="btn btn-danger">Supprimer</button>
-            </a>
+            </form>
         </div>
     </div>
 </div>

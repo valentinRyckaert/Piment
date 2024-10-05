@@ -40,9 +40,10 @@
             </a>
         </div>
         <div class="col-md-4 text-center">
-            <a href="/caserne/delete/<?= $oneCaserne->getNumCaserne() ?>">
-                <button class="btn btn-danger">Supprimer</button>
-            </a>
+            <form action="/caserne/delete/" method="post">
+                <input type="hidden" name="id" value="<?= $oneCaserne->getNumCaserne() ?>">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
         </div>
     </div>
 </div>

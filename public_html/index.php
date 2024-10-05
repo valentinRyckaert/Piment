@@ -172,7 +172,7 @@ function caserneRoutes_post($fragments)
     $action = array_shift($fragments);
     switch ($action) {
         case "delete" :
-            call_user_func_array([new CaserneController(), "delete"], $fragments);
+            call_user_func_array([new CaserneController(), "do_delete"], $fragments);
             break;
         case "save" :
             call_user_func_array([new CaserneController(), "do_create"], $fragments);

@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-footer text-center">
                     <button class="btn btn-primary col-3">Editer</button>
-                    <button class="btn btn-danger col-3">Supprimer</button>
+                    <a href="/caserne/delete/<?= $oneCaserne->getNumCaserne() ?>"><button class="btn btn-danger col-3">Supprimer</button></a>
                     <a href="/caserne/show"><button class="btn btn-secondary col-3">Retour</button></a>
                 </div>
             </div>
