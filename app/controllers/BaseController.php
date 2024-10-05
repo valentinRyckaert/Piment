@@ -11,10 +11,12 @@ abstract class BaseController {
 
     private $DAO;
     protected $DAOName;
+    protected $DAOObject;
     protected $renderer;
 
-    public function __construct($DAO) {
+    public function __construct($DAO,$object=null) {
         $this->DAO = $DAO != null ? new $DAO(SingletonDatabaseMariaDB::getInstance()->getCnx()) : null;
+        $this->DAOObject = $object;
         $this->renderer = new Render();
     }
 
@@ -54,25 +56,14 @@ abstract class BaseController {
     }
 
     public function do_create() {
-        if($this->DAOName == "Pompier") {
-            $object = new Pompier();
-            $object->setMatricule(htmlspecialchars($_POST['matricule']));
-            $object->setPrenom(htmlspecialchars($_POST['prenom']));
-            $object->setNom(htmlspecialchars($_POST['nom']));
-            $object->setDateNaissance(htmlspecialchars($_POST['dateNaissance']));
-            $object->setNumCaserne(htmlspecialchars($_POST['numCaserne']));
-            $object->setCodeGrade(htmlspecialchars($_POST['codeGrade']));
-            $object->setMatriculeRespo(htmlspecialchars($_POST['matriculeRespo']));
-        }else if($this->DAOName == "Caserne") {
-            $object = new Caserne();
-            $object->setNumCaserne(htmlspecialchars($_POST['numCaserne']));
-            $object->setAdresse(htmlspecialchars($_POST['adresse']));
-            $object->setCp(htmlspecialchars($_POST['cp']));
-            $object->setVille(htmlspecialchars($_POST['ville']));
-            $object->setCodeTypeC(htmlspecialchars($_POST['codeTypeC']));
+        $object = new $this->DAOObject();
+        foreach ($_POST as $key => $value) {
+            $setter = 'set' . ucfirst($key);
+            if (method_exists($object, $setter)) {
+                $object->$setter($value);
+            }
         }
         $this->DAO->save($object);
         $this->show();
     }
-
 }
