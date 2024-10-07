@@ -10,7 +10,7 @@ class DAOCaserne extends DAO {
             $uneCnx,
             Caserne::class,
             'casernes',
-            ['numcaserne','addresse','CP','ville','CodeTypeC']
+            ['numcaserne','adresse','CP','ville','CodeTypeC']
         );
     }
 }

@@ -50,10 +50,10 @@ abstract class DAO {
     public function save($object): bool {
         $SQL = "insert into {$this->TableName} values (";
         foreach($this->TableProps as $i => $prop) {
-            if($i < count($this->TableProps)-2){
+            if($i < count($this->TableProps)-1){
                 $SQL = $SQL.":".$prop.", ";
             } else {
-                $SQL = $SQL.":".$prop;
+                $SQL = $SQL." :".$prop;
             }
         }
         $SQL = $SQL.")";
