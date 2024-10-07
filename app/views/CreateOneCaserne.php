@@ -1,4 +1,5 @@
 <?php require_once("_header.php"); ?>
+<?php  /** @var $csrf_token string */ ?>
 
 <div class="container mt-5">
     <h2 class="mb-4">Créer une Caserne</h2>
@@ -23,6 +24,7 @@
             <label for="codeTypeC">Code Type de Caserne</label>
             <input type="number" class="form-control" id="codeTypeC" name="codeTypeC">
         </div>
+        <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
         <button type="submit" class="btn btn-success">Créer Caserne</button>
     </form>
 </div>

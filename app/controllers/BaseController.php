@@ -4,6 +4,7 @@ namespace piment\controllers;
 
 use piment\models\Caserne;
 use piment\models\Pompier;
+use piment\utils\CsrfToken;
 use piment\utils\Render;
 use piment\utils\SingletonDatabaseMariaDB;
 
@@ -21,7 +22,10 @@ abstract class BaseController {
     }
 
     public function create() {
-        echo $this->renderer->render("CreateOne{$this->DAOName}");
+        echo $this->renderer->render(
+            "CreateOne{$this->DAOName}",
+            ["csrf_token"=>CsrfToken::generateToken()]
+        );
     }
 
     /**
@@ -47,23 +51,37 @@ abstract class BaseController {
     }
 
     public function delete($id) {
-        echo $this->renderer->render("SuppressOne{$this->DAOName}",["one{$this->DAOName}"=>$this->DAO->find($id)]);
+        echo $this->renderer->render(
+            "SuppressOne{$this->DAOName}",
+            [
+                "one{$this->DAOName}"=>$this->DAO->find($id),
+                "csrf_token"=>CsrfToken::generateToken()
+            ]
+        );
     }
 
-    public function do_delete() {
-        $this->DAO->remove($this->DAO->find($_POST['id']));
-        $this->show();
+    public  function do_delete() {
+        if(!CsrfToken::checkToken($_POST['csrf_token'])) {
+            echo $this->renderer->render("SessionError");
+        } else {
+            $this->DAO->remove($this->DAO->find($_POST['id']));
+            $this->show();
+        }
     }
 
     public function do_create() {
-        $object = new $this->DAOObject();
-        foreach ($_POST as $key => $value) {
-            $setter = 'set' . ucfirst($key);
-            if (method_exists($object, $setter)) {
-                $object->$setter($value);
+        if(!CsrfToken::checkToken($_POST['csrf_token'])) {
+            echo $this->renderer->render("SessionError");
+        } else {
+            $object = new $this->DAOObject();
+            foreach ($_POST as $key => $value) {
+                $setter = 'set' . ucfirst($key);
+                if (method_exists($object, $setter)) {
+                    $object->$setter($value);
+                }
             }
+            $this->DAO->save($object);
+            $this->show();
         }
-        $this->DAO->save($object);
-        $this->show();
     }
 }

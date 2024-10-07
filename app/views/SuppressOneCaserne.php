@@ -1,5 +1,6 @@
 <?php require_once("_styles.php"); ?>
 <?php /** @var $oneCaserne \piment\models\Caserne */ ?>
+<?php  /** @var $csrf_token string */ ?>
 
 <div class="text-center mb-3 mt-5">
     <h3 class="text-center">Voulez-vous supprimer cette caserne ?</h3>
@@ -42,6 +43,7 @@
         <div class="col-md-4 text-center">
             <form action="/caserne/delete/" method="post">
                 <input type="hidden" name="id" value="<?= $oneCaserne->getNumCaserne() ?>">
+                <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
                 <button type="submit" class="btn btn-danger">Supprimer</button>
             </form>
         </div>

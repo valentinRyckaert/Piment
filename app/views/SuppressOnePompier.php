@@ -1,5 +1,6 @@
 <?php require_once("_styles.php"); ?>
 <?php /** @var $onePompier \piment\models\Pompier */ ?>
+<?php  /** @var $csrf_token string */ ?>
 
 <div class="text-center mb-3 mt-5">
     <h3 class="text-center">Voulez-vous supprimer cette pompier ?</h3>
@@ -54,6 +55,7 @@
         <div class="col-md-4 text-center">
             <form action="/pompier/delete/" method="post">
                 <input type="hidden" name="id" value="<?= $onePompier->getMatricule() ?>">
+                <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
                 <button type="submit" class="btn btn-danger">Supprimer</button>
             </form>
         </div>
