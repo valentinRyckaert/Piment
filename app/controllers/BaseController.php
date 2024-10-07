@@ -61,7 +61,7 @@ abstract class BaseController {
     }
 
     public  function do_delete() {
-        if(!CsrfToken::checkToken($_POST['csrf_token'])) {
+        if(!CsrfToken::checkToken(htmlspecialchars($_POST['csrf_token']))) {
             echo $this->renderer->render("SessionError");
         } else {
             $this->DAO->remove($this->DAO->find($_POST['id']));
@@ -70,7 +70,7 @@ abstract class BaseController {
     }
 
     public function do_create() {
-        if(!CsrfToken::checkToken($_POST['csrf_token'])) {
+        if(!CsrfToken::checkToken(htmlspecialchars($_POST['csrf_token']))) {
             echo $this->renderer->render("SessionError");
         } else {
             $object = new $this->DAOObject();
