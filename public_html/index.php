@@ -89,7 +89,7 @@ function pompierRoutes_get($fragments)
         case "demo" :
         {
             //http://127.0.0.1:8080/pompier/demo/1/45?p=2
-            echo "Calling pompierController->demo_test <hr>";
+            //echo "Calling pompierController->demo_test <hr>";
             //var_dump($fragments);
             call_user_func_array([new PompierController(), "detail"], $fragments);
             break;
