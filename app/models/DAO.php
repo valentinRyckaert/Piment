@@ -122,4 +122,13 @@ abstract class DAO {
         $preparedStatement->execute();
         return $preparedStatement->fetch();
     }
+
+    public function searchByProp($prop,$value)
+    {
+        $SQL = "select * from {$this->TableName} where :prop like :value%";
+        $preparedStatement = $this->cnx->prepare($SQL);
+        $preparedStatement->bindValue('prop', $prop);
+        $preparedStatement->bindValue('value', $value);
+        return $preparedStatement->execute();
+    }
 }

@@ -160,7 +160,10 @@ function caserneRoutes_get($fragments)
         case "delete" :
             call_user_func_array([new CaserneController(), "delete"], $fragments);
             break;
-
+        case "showspecific":
+            //echo "Calling pompierController->showByItem <hr>";
+            call_user_func_array([new CaserneController(), "showByItem"], $fragments);
+            break;
         default:
             echo "Action '$action' non defini <hr>";
             break;
