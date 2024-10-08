@@ -37,6 +37,12 @@ abstract class BaseController {
         echo $this->renderer->render("Show{$this->DAOName}s",["les{$this->DAOName}s"=>$this->DAO->findAll($page*$items,$items)]);
     }
 
+    public function showByItem() {
+        $prop = "numcaserne"; //htmlspecialchars($_GET['prop']);
+        $value = htmlspecialchars($_GET['value']);
+        echo $this->renderer->render("Show{$this->DAOName}s",["les{$this->DAOName}s"=>$this->DAO->findByProp($prop,$value)]);
+    }
+
     public function detail($id) {
         echo $this->renderer->render("ShowOne{$this->DAOName}",["one{$this->DAOName}"=>$this->DAO->find($id)]);
     }
