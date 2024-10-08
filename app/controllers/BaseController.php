@@ -2,8 +2,6 @@
 
 namespace piment\controllers;
 
-use piment\models\Caserne;
-use piment\models\Pompier;
 use piment\utils\CsrfToken;
 use piment\utils\Render;
 use piment\utils\SingletonDatabaseMariaDB;
@@ -29,7 +27,8 @@ abstract class BaseController {
     }
 
     /**
-     * show all casernes, based on page number and items per page
+     * Show all casernes, based on page number and items per page
+     *
      * @return void
      */
     public function show() {
