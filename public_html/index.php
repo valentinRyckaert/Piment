@@ -16,6 +16,7 @@ Router::get('/pompier/affiche', new PompierController(), 'show');
 
 // show specific
 Router::get('/caserne/showspecific', new CaserneController(), 'showByItem');
+Router::get('/pompier/showspecific', new PompierController(), 'showByItem');
 
 // show one
 Router::get('/caserne/detail/#', new CaserneController(), 'detail');

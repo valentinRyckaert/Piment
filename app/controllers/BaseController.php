@@ -34,18 +34,15 @@ abstract class BaseController {
     public function show() {
         $page = isset($_GET['page']) ? $_GET['page'] : 0;
         $items = isset($_GET['items']) ? $_GET['items'] : 1024;
-        echo $this->renderer->render("Show{$this->DAOName}s",["les{$this->DAOName}s"=>$this->DAO->findAll($page*$items,$items)]);
+        echo $this->renderer->render("Show{$this->DAOName}s",[
+            "les{$this->DAOName}s" => $this->DAO->findAll($page*$items,$items),
+            "route" => strtolower($this->DAOName)
+        ]);
     }
 
     public function showByItem() {
-        //$prop = htmlspecialchars($_GET['prop']);
-        if ($this->DAOName == "Caserne") {
-            $prop = "numcaserne";
-        } else {
-            $prop = "matricule";
-        }
         $value = htmlspecialchars($_GET['value']);
-        echo $this->renderer->render("Show{$this->DAOName}s",["les{$this->DAOName}s"=>$this->DAO->searchByProp($prop,$value)]);
+        echo $this->renderer->render("Show{$this->DAOName}s",["les{$this->DAOName}s"=>$this->DAO->searchByProp($value)]);
     }
 
     public function detail($id) {
