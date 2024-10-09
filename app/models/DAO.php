@@ -124,7 +124,7 @@ abstract class DAO {
     }
 
     public function searchByProp($value) {
-        $SQL = "SELECT * FROM {$this->TableName} WHERE {$this->TableProps[1]} LIKE :value";
+        $SQL = "SELECT * FROM {$this->TableName} WHERE {$this->TableProps[2]} LIKE :value";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->bindValue(':value', $value . '%');
         $preparedStatement->execute();

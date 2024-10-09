@@ -12,7 +12,7 @@ class CsrfToken {
             'token' => bin2hex(random_bytes(128)),
             'time' => time()
         ];
-        $_SESSION['csrf_token'] = $token;
+        $_SESSION[self::$token_name] = $token;
         return $token['token'];
     }
 
@@ -20,11 +20,11 @@ class CsrfToken {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        if($token === $_SESSION['csrf_token']['token'] && (time() - $_SESSION['csrf_token']['time']) <= 600) {
-            unset($_SESSION['csrf_token']);
+        if($token === $_SESSION[self::$token_name]['token'] && (time() - $_SESSION[self::$token_name]['time']) <= 600) {
+            unset($_SESSION[self::$token_name]);
             return true;
         } else {
-            unset($_SESSION['csrf_token']);
+            unset($_SESSION[self::$token_name]);
             return false;
         }
     }

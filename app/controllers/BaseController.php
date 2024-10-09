@@ -77,7 +77,7 @@ abstract class BaseController {
     }
 
     public function do_create() {
-        if(!CsrfToken::checkToken(htmlspecialchars($_POST['csrf_token']))) {
+        if(!CsrfToken::checkToken(htmlspecialchars(htmlspecialchars($_POST['csrf_token'])))) {
             echo $this->renderer->render("SessionError");
         } else {
             $object = new $this->DAOObject();
