@@ -38,7 +38,12 @@ abstract class BaseController {
     }
 
     public function showByItem() {
-        $prop = "numcaserne"; //htmlspecialchars($_GET['prop']);
+        //$prop = htmlspecialchars($_GET['prop']);
+        if ($this->DAOName == "Caserne") {
+            $prop = "numcaserne";
+        } else {
+            $prop = "matricule";
+        }
         $value = htmlspecialchars($_GET['value']);
         echo $this->renderer->render("Show{$this->DAOName}s",["les{$this->DAOName}s"=>$this->DAO->searchByProp($prop,$value)]);
     }

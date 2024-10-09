@@ -123,12 +123,30 @@ abstract class DAO {
         return $preparedStatement->fetch();
     }
 
-    public function searchByProp($prop,$value)
+    public function searchByProp($prop, $value)
     {
-        $SQL = "select * from {$this->TableName} where :prop like ':value'";
+
+        // Prepare the SQL statement with the column name directly in the query
+        $SQL = "SELECT * FROM {$this->TableName} WHERE {$prop} LIKE :value";
         $preparedStatement = $this->cnx->prepare($SQL);
-        $preparedStatement->bindValue('prop', $prop);
-        $preparedStatement->bindValue('value', $value.'%');
-        return $preparedStatement->execute();
+
+        // Bind the value parameter
+        $preparedStatement->bindValue(':value', $value . '%');
+
+        // Execute the statement
+        $preparedStatement->execute();
+        $data = $preparedStatement->fetchAll(\PDO::FETCH_ASSOC);
+        $casernes = [];
+        foreach ($data as $row) {
+            $object = new $this->object();
+            foreach ($row as $key => $value) {
+                $setter = 'set' . ucfirst($key);
+                if (method_exists($object, $setter)) {
+                    $object->$setter($value);
+                }
+            }
+            $casernes[] = $object;
+        }
+        return $casernes;
     }
 }
