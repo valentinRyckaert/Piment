@@ -41,7 +41,7 @@ $SQL = "insert into pompiers values (:matricule, :prenom, :nom, :chefAgret, :dat
 for($i = 1; $i <= 100; $i++){
     $preparedStatement = $cnx->prepare($SQL);
     $preparedStatement->execute(array(
-        "matricule" => "$i",
+        "matricule" => "MA-$i",
         "prenom" => $faker->firstName(),
         "nom" => $faker->lastName(),
         "chefAgret" => $faker->randomLetter(),

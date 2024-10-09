@@ -22,9 +22,8 @@
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Grades</a>
                 </li>
-                <a class="navbar-brand">Navbar</a>
-                <form class="d-flex" role="search" action="/casernes/showspecific/" method="get">
-                    <input class="form-control me-2" name="props" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" role="search" action="/caserne/showspecific" method="get">
+                    <input class="form-control me-2" name="value" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
 

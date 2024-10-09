@@ -40,7 +40,7 @@ abstract class BaseController {
     public function showByItem() {
         $prop = "numcaserne"; //htmlspecialchars($_GET['prop']);
         $value = htmlspecialchars($_GET['value']);
-        echo $this->renderer->render("Show{$this->DAOName}s",["les{$this->DAOName}s"=>$this->DAO->findByProp($prop,$value)]);
+        echo $this->renderer->render("Show{$this->DAOName}s",["les{$this->DAOName}s"=>$this->DAO->searchByProp($prop,$value)]);
     }
 
     public function detail($id) {

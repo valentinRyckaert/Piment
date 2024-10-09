@@ -20,6 +20,8 @@ class Router
         $client_method = $_SERVER['REQUEST_METHOD'];
         $client_path = $_SERVER['REQUEST_URI'];
 
+        $client_path = strtok($client_path,'?');
+
         $client_path = substr($client_path, -1) === '/'
             ? substr($client_path, 0, -1)
             : $client_path
