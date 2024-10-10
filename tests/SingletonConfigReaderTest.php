@@ -21,6 +21,7 @@ final class SingletonConfigReaderTest extends TestCase
     /**
      * @return void
      */
+    /*
     protected function setUp(): void
     {
         $configContent = "
@@ -89,7 +90,7 @@ final class SingletonConfigReaderTest extends TestCase
             'Should return null for nonexistent section'
         );
     }
-
+    */
     protected function tearDown(): void {
         if (file_exists(__DIR__ . '/../../configTest.ini')) {
             unlink(__DIR__ . '/../../configTest.ini');

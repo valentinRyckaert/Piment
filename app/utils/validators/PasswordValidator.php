@@ -1,5 +1,7 @@
 <?php
 
+namespace piment\utils\validators;
+
 use \piment\utils\validators\InterfaceValidator;
 
 class PasswordValidator implements InterfaceValidator {
@@ -9,7 +11,10 @@ class PasswordValidator implements InterfaceValidator {
      * @return bool
      */
     public function validate(string $data): bool {
-        return preg_match("/^[&%#@=+!?;:_][a-z][A-Z][0-9]12+$/", $data);
+        return preg_match(
+            "/^(?=.*[&%#@=+!?;:_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{12,}$/",
+            $data
+        );
     }
 
 }
