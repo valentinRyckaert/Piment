@@ -9,8 +9,7 @@ class PasswordValidator implements InterfaceValidator {
      * @return bool
      */
     public function validate(string $data): bool {
-        // TODO: Implement validate() method.
-
+        return preg_match("/^[&%#@=+!?;:_][a-z][A-Z][0-9]12+$/", $data);
     }
 
 }

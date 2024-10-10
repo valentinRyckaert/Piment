@@ -1,6 +1,7 @@
 <?php
 
 namespace tests;
+use PasswordValidator;
 
 class PasswordValidatorTest extends \PHPUnit\Framework\TestCase
 {
@@ -21,8 +22,9 @@ class PasswordValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function checkPasswordWithLessThan8CharacterFail(){
-
+    public function checkPasswordWithLessThan8CharacterFail()
+    {
+        $password = "azertyu";
     }
 
 

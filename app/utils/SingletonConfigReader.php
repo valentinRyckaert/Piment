@@ -37,4 +37,9 @@ class SingletonConfigReader {
             return $this->data[$section][$key];
         }
     }
+
+    public function setData(string $data): void
+    {
+        $this->data = parse_ini_file(__DIR__ . $data, true);
+    }
 }
