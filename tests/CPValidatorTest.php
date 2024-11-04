@@ -4,52 +4,52 @@ namespace tests;
 
 use PHPUnit\Framework\TestCase;
 use piment\utils\validators\CPValidator;
+use piment\utils\validators\MailValidator;
 
 class CPValidatorTest extends TestCase
 {
 
+    private $cpValidator;
+
+    protected function setUp(): void {
+        $this->cpValidator = new CPValidator();
+    }
+
     public function testValidate()
     {
-        $cpValidator = new CPValidator();
-        $this->assertTrue($cpValidator->validate("75000"));
-        $this->assertTrue($cpValidator->validate("75001"));
-        $this->assertTrue($cpValidator->validate("75002"));
+        $this->assertTrue($this->cpValidator->validate("75000"));
+        $this->assertTrue($this->cpValidator->validate("75001"));
+        $this->assertTrue($this->cpValidator->validate("75002"));
     }
 
     public function testTooShort()
     {
-        $cpValidator = new CPValidator();
-        $this->assertFalse($cpValidator->validate("7500")); // Trop court
+        $this->assertFalse($this->cpValidator->validate("7500")); // Trop court
     }
 
     public function testTooLong()
     {
-        $cpValidator = new CPValidator();
-        $this->assertFalse($cpValidator->validate("750000")); // Trop long
+        $this->assertFalse($this->cpValidator->validate("750000")); // Trop long
     }
 
     public function testNonNumeric()
     {
-        $cpValidator = new CPValidator();
-        $this->assertFalse($cpValidator->validate('abcd1')); // Non numérique
+        $this->assertFalse($this->cpValidator->validate('abcd1')); // Non numérique
     }
 
     public function testAnotherTooShort()
     {
-        $cpValidator = new CPValidator();
-        $this->assertFalse($cpValidator->validate('1234')); // Trop court
+        $this->assertFalse($this->cpValidator->validate('1234')); // Trop court
     }
 
     public function testContainsLetters()
     {
-        $cpValidator = new CPValidator();
-        $this->assertFalse($cpValidator->validate('7500a')); // Contient des lettres
+        $this->assertFalse($this->cpValidator->validate('7500a')); // Contient des lettres
     }
 
     public function testOutOfRange()
     {
-        $cpValidator = new CPValidator();
-        $this->assertFalse($cpValidator->validate('99000')); // Hors plage
+        $this->assertFalse($this->cpValidator->validate('99000')); // Hors plage
     }
 
 
