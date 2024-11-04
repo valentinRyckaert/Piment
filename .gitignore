@@ -4,3 +4,4 @@ storage/*
 .idea
 config.ini
 reports/*
+logs/*
