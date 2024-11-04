@@ -2,6 +2,8 @@
 
 namespace piment\models; 
 
+use piment\utils\SingletonLogger;
+
 abstract class DAO {
     /* @var $cnx <PDO> */
     protected $cnx;
@@ -29,6 +31,7 @@ abstract class DAO {
                     $foundObject->$setter($value);
                 }
             }
+            SingletonLogger::getInstance()->getSQLlogger()->warning("find {$this->TableName}");
             return $foundObject;
         }
         return null;
@@ -39,6 +42,7 @@ abstract class DAO {
         $getId = 'get' . ucfirst($this->TableProps[0]);
         if (method_exists($object, $getId)) {
             $preparedStatement->bindValue("id", $object->$getId());
+            SingletonLogger::getInstance()->getSQLlogger()->warning("remove in {$this->TableName}");
             return $preparedStatement->execute();
         }
         return 0;
@@ -64,6 +68,7 @@ abstract class DAO {
                 $preparedStatement->bindValue($prop,$object->$getter());
             }
         }
+        SingletonLogger::getInstance()->getSQLlogger()->warning("new in {$this->TableName}");
         return $preparedStatement->execute();
     }
 
@@ -84,6 +89,7 @@ abstract class DAO {
                 $preparedStatement->bindValue($prop,$object->$getter());
             }
         }
+        SingletonLogger::getInstance()->getSQLlogger()->warning("update in {$this->TableName}");
         return $preparedStatement->execute();
     }
 
@@ -110,6 +116,7 @@ abstract class DAO {
             }
             $casernes[] = $object;
         }
+        SingletonLogger::getInstance()->getSQLlogger()->warning("find all {$this->TableName}");
         return $casernes;
     }
 
@@ -120,6 +127,7 @@ abstract class DAO {
         $SQL = "select count(*) from {$this->TableName}";
         $preparedStatement = $this->cnx->prepare($SQL);
         $preparedStatement->execute();
+        SingletonLogger::getInstance()->getSQLlogger()->warning("count {$this->TableName}");
         return $preparedStatement->fetch();
     }
 
@@ -140,6 +148,7 @@ abstract class DAO {
             }
             $casernes[] = $object;
         }
+        SingletonLogger::getInstance()->getSQLlogger()->warning("search by props {$this->TableName}");
         return $casernes;
     }
 }
