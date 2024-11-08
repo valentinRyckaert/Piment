@@ -63,56 +63,58 @@ for($i = 1; $i <= 70; $i++){
 }
 
 $SQL = "INSERT INTO role VALUES (:id, :libelle, :permissions)";
-$roles = [];
 for ($i = 0; $i < 3; $i++) {
-    $libelle = $faker->word;
-    $permissions = $faker->randomElement([4,15]);
     $stmt = $cnx->prepare($SQL);
     $stmt->execute([
         'id' => $i,
-        'libelle' => $libelle,
-        'permissions' => $permissions
+        'libelle' => $faker->word(),
+        'permissions' => $faker->randomElement([4,15])
     ]);
 }
-
+/*
 $SQL = "INSERT INTO profil VALUES (:id, :tel, :email, :datecreation, :address)";
 for ($i = 0; $i < 3; $i++) {
     $stmt = $cnx->prepare($SQL);
     $stmt->execute([
         "id" => $i,
-        "tel" => $faker->phoneNumber,
-        "email" => $faker->unique()->safeEmail,
+        "tel" => $faker->phoneNumber(),
+        "email" => $faker->unique()->safeEmail(),
         "datecreation" => $faker->dateTimeThisDecade->format('Y-m-d H:i:s'),
-        "address" => $faker->address
+        "address" => $faker->address()
     ]);
 }
 
-$SQL = "INSERT INTO user VALUES (:login, :passwdHash, :name, :username, :status, :profil_id, :role)";
+$SQL = "INSERT INTO user VALUES (:id, :login, :passwdHash, :name, :username, :status, :profil_id, :role_id)";
 $stmt = $cnx->prepare($SQL);
 $stmt->execute([
+    "id" => 0,
     "login" => "consultant",
     "passwdHash" => password_hash("123+aze"),
-    "name" => $faker->name,
-    "username" => $faker->userName,
+    "name" => $faker->name(),
+    "username" => $faker->userName(),
     "status" => 'active',
     "profil_id" => 0,
     "role_id" => 0
 ]);
 $stmt->execute([
+    "id" => 1,
     "login" => "secretaire",
     "passwdHash" => password_hash("123+aze"),
-    "name" => $faker->name,
-    "username" => $faker->userName,
+    "name" => $faker->name(),
+    "username" => $faker->userName(),
     "status" => 'active',
     "profil_id" => 1,
     "role_id" => 1
 ]);
 $stmt->execute([
+    "id" => 2,
     "login" => "admin",
     "passwdHash" => password_hash("123+aze"),
-    "name" => $faker->name,
-    "username" => $faker->userName,
+    "name" => $faker->name(),
+    "username" => $faker->userName(),
     "status" => 'active',
     "profil_id" => 2,
     "role_id" => 2
 ]);
+
+*/
