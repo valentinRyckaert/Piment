@@ -3,6 +3,7 @@
 namespace piment\utils;
 
 use App\models\User;
+use piment\models\DAOUser;
 
 class Auth
 {
@@ -25,14 +26,17 @@ class Auth
      * @return User|null
      */
     public static function login(string $log, string $passwd): ?User {
-        return true;
+        if($user = DAOUser::class->findByLoginPassword($log,$passwd)) {
+            return $user;
+        }
+        return null;
     }
 
     /**
      * @return void
      */
     public static function logout(): void {
-
+        session_destroy();
     }
 
     /**
@@ -55,6 +59,6 @@ class Auth
      * @return User
      */
     public static function user(): User {
-        return new User();
+        return htmlspecialchars($_SESSION['user']);
     }
 }

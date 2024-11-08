@@ -12,7 +12,7 @@ class Filter
 
     }
 
-    public function addValidator(string $key, InterfaceValidator $validator ) : void {
+    public function addValidator(string $key, InterfaceValidator $validator) : void {
 
     }
 

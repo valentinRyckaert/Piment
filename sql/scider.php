@@ -64,15 +64,19 @@ for($i = 1; $i <= 70; $i++){
 
 $SQL = "INSERT INTO role VALUES (:id, :libelle, :permissions)";
 $roles = [];
-for ($i = 0; $i < 4; $i++) {
+for ($i = 0; $i < 3; $i++) {
     $libelle = $faker->word;
     $permissions = $faker->randomElement([4,15]);
     $stmt = $cnx->prepare($SQL);
-    $stmt->execute([$i, $libelle, $permissions]);
+    $stmt->execute([
+        'id' => $i,
+        'libelle' => $libelle,
+        'permissions' => $permissions
+    ]);
 }
 
 $SQL = "INSERT INTO profil VALUES (:id, :tel, :email, :datecreation, :address)";
-for ($i = 0; $i < 5; $i++) {
+for ($i = 0; $i < 3; $i++) {
     $stmt = $cnx->prepare($SQL);
     $stmt->execute([
         "id" => $i,
@@ -83,14 +87,32 @@ for ($i = 0; $i < 5; $i++) {
     ]);
 }
 
-$SQL = "INSERT INTO users VALUES (:login, :passwdHash, :name, :username, :status, :profil_id)";
-for ($i = 0; $i < 5; $i++) {
-    $stmt = $cnx->prepare($SQL);
-    $stmt->execute([
-        "login" => $faker->unique()->userName,
-        "passwdHash" => password_hash($faker->password, PASSWORD_DEFAULT),
-        "name" => $faker->name,
-        "username" => $faker->userName,
-        "status" => 'active'
-    ]);
-}
+$SQL = "INSERT INTO user VALUES (:login, :passwdHash, :name, :username, :status, :profil_id, :role)";
+$stmt = $cnx->prepare($SQL);
+$stmt->execute([
+    "login" => "consultant",
+    "passwdHash" => password_hash("123+aze"),
+    "name" => $faker->name,
+    "username" => $faker->userName,
+    "status" => 'active',
+    "profil_id" => 0,
+    "role_id" => 0
+]);
+$stmt->execute([
+    "login" => "secretaire",
+    "passwdHash" => password_hash("123+aze"),
+    "name" => $faker->name,
+    "username" => $faker->userName,
+    "status" => 'active',
+    "profil_id" => 1,
+    "role_id" => 1
+]);
+$stmt->execute([
+    "login" => "admin",
+    "passwdHash" => password_hash("123+aze"),
+    "name" => $faker->name,
+    "username" => $faker->userName,
+    "status" => 'active',
+    "profil_id" => 2,
+    "role_id" => 2
+]);

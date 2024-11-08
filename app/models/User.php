@@ -3,6 +3,7 @@
 namespace App\models;
 
 use piment\models\Profil;
+use piment\models\Role;
 
 class User {
     private $id;
@@ -12,10 +13,10 @@ class User {
     private $username;
     private $status;
     private $dateClosure;
-
     private Profil $profil;
+    private Role $role;
 
-    public function __construct($id, $login, $passwdHash, $name, $username, $status, Profil $profil) {
+    public function __construct($id, $login, $passwdHash, $name, $username, $status, Profil $profil, Role $role) {
         $this->id = $id;
         $this->login = $login;
         $this->passwdHash = $passwdHash;
@@ -24,6 +25,7 @@ class User {
         $this->status = $status;
         $this->dateClosure = 0;
         $this->profil = $profil;
+        $this->role = $role;
     }
 
     // Getters
@@ -61,6 +63,11 @@ class User {
         return $this->profil;
     }
 
+    public function getRole(): Role
+    {
+        return $this->role;
+    }
+
     // Setters
     public function setLogin($login) {
         // Vous pouvez ajouter une validation pour l'unicité ici
@@ -86,5 +93,10 @@ class User {
     public function setDateClosure(int $dateClosure): void
     {
         $this->dateClosure = $dateClosure;
+    }
+
+    public function setRole(Role $role): void
+    {
+        $this->role = $role;
     }
 }
