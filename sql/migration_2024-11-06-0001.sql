@@ -3,10 +3,10 @@ use `pompiers`;
 DROP TABLE IF EXISTS profil;
 CREATE TABLE profil (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    tel VARCHAR(15) NOT NULL,
+    tel VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     dateCreation DATETIME NOT NULL,
-    adresse VARCHAR(255) NOT NULL
+    address VARCHAR(255) NOT NULL
 );
 
 DROP TABLE IF EXISTS role;
