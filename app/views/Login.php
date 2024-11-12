@@ -9,14 +9,14 @@
                     <h4>Connexion</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="/login" method="post">
                         <div class="mb-3">
                             <label for="user" class="form-label">Utilisateur</label>
-                            <input type="text" class="form-control" id="user" required>
+                            <input type="text" class="form-control" id="user" name="user" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Mot de passe</label>
-                            <input type="password" class="form-control" id="password" required>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
                         <button type="submit" class="btn btn-primary btn-block">Se connecter</button>

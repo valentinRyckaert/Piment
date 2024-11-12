@@ -1,9 +1,6 @@
 <?php
 
-namespace App\models;
-
-use piment\models\Profil;
-use piment\models\Role;
+namespace piment\models;
 
 class User {
     private $id;
@@ -16,86 +13,135 @@ class User {
     private Profil $profil;
     private Role $role;
 
-    public function __construct($id, $login, $passwdHash, $name, $username, $status, Profil $profil, Role $role) {
-        $this->id = $id;
-        $this->login = $login;
-        $this->passwdHash = $passwdHash;
-        $this->name = $name;
-        $this->username = $username;
-        $this->status = $status;
-        $this->dateClosure = 0;
-        $this->profil = $profil;
-        $this->role = $role;
-    }
 
-    // Getters
-    public function getId() {
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getLogin() {
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLogin()
+    {
         return $this->login;
     }
 
-    public function getPasswdHash() {
+    /**
+     * @param mixed $login
+     */
+    public function setLogin($login): void
+    {
+        $this->login = $login;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPasswdHash()
+    {
         return $this->passwdHash;
     }
 
-    public function getName() {
+    /**
+     * @param mixed $passwdHash
+     */
+    public function setPasswdHash($passwdHash): void
+    {
+        $this->passwdHash = $passwdHash;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getUsername() {
+    /**
+     * @param mixed $name
+     */
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
         return $this->username;
     }
 
-    public function getStatus() {
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function getDateClosure(): int
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateClosure()
     {
         return $this->dateClosure;
     }
 
-    public function getProfil(): Profil
-    {
-        return $this->profil;
-    }
-
-    public function getRole(): Role
-    {
-        return $this->role;
-    }
-
-    // Setters
-    public function setLogin($login) {
-        // Vous pouvez ajouter une validation pour l'unicité ici
-        $this->login = $login;
-    }
-
-    public function setPasswdHash($passwdHash) {
-        $this->passwdHash = $passwdHash;
-    }
-
-    public function setName($name) {
-        $this->name = $name;
-    }
-
-    public function setUsername($username) {
-        $this->username = $username;
-    }
-
-    public function setStatus($status) {
-        $this->status = $status;
-    }
-
-    public function setDateClosure(int $dateClosure): void
+    /**
+     * @param mixed $dateClosure
+     */
+    public function setDateClosure($dateClosure): void
     {
         $this->dateClosure = $dateClosure;
     }
 
-    public function setRole(Role $role): void
+    public function getProfil(): \piment\models\Profil
+    {
+        return $this->profil;
+    }
+
+    public function setProfil(\piment\models\Profil $profil): void
+    {
+        $this->profil = $profil;
+    }
+
+    public function getRole(): \piment\models\Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(\piment\models\Role $role): void
     {
         $this->role = $role;
     }

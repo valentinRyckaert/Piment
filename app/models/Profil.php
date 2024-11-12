@@ -8,54 +8,85 @@ class Profil {
     private $tel;
     private $email;
     private $dateCreation;
-    private $adresse;
+    private $address;
 
-    public function __construct($id ,$tel, $email, $dateCreation, $adresse) {
-        $this->id = $id;
-        $this->tel = $tel;
-        $this->email = $email;
-        $this->dateCreation = $dateCreation;
-        $this->adresse = $adresse;
-    }
-
-    // Getters
-
-    public function getId() {
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
         return $this->id;
     }
-    public function getTel() {
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTel()
+    {
         return $this->tel;
     }
 
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function getDateCreation() {
-        return $this->dateCreation;
-    }
-
-    public function getAdresse() {
-        return $this->adresse;
-    }
-
-    // Setters
-    public function setTel($tel) {
-        // Vous pouvez ajouter une validation pour le format du numéro de téléphone ici
+    /**
+     * @param mixed $tel
+     */
+    public function setTel($tel): void
+    {
         $this->tel = $tel;
     }
 
-    public function setEmail($email) {
-        // Vous pouvez ajouter une validation pour le format de l'email ici
-        $this->email = $email;
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
     }
 
-    public function setDateCreation($dateCreation) {
-        // Vous pouvez ajouter une validation pour le format de la date ici
+    /**
+     * @param mixed $dateCreation
+     */
+    public function setDateCreation($dateCreation): void
+    {
         $this->dateCreation = $dateCreation;
     }
 
-    public function setAdresse($adresse) {
-        $this->adresse = $adresse;
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address): void
+    {
+        $this->address = $address;
     }
 }

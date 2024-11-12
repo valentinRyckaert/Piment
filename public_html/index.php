@@ -5,10 +5,13 @@ require_once '../vendor/autoload.php';
 use piment\controllers\CaserneController;
 use piment\controllers\DefaultController;
 use piment\controllers\PompierController;
-use piment\controllers\Router;
+use piment\utils\Router;
 
 // Accueil
 Router::get('/', new DefaultController(), 'index');
+Router::get('/login', new DefaultController(), 'login');
+Router::post('/login', new DefaultController(), 'do_login');
+Router::get('/logout', new DefaultController(), 'logout');
 
 // show all
 Router::get('/caserne/show', new CaserneController(), 'show');

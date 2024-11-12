@@ -7,12 +7,6 @@ class Role {
     private $libelle;
     private $permissions;
 
-    public function __construct($id, $libelle, int $permissions) {
-        $this->id = $id;
-        $this->libelle = $libelle;
-        $this->permissions = $permissions;
-    }
-
     // Getters
     public function getId() {
         return $this->id;

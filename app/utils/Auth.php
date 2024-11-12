@@ -2,7 +2,7 @@
 
 namespace piment\utils;
 
-use App\models\User;
+use piment\models\User;
 use piment\models\DAOUser;
 
 class Auth
@@ -17,16 +17,27 @@ class Auth
      * @return bool
      */
     public static function is_logged(): bool {
-        return 0;
+        if(isset($_SESSION['user'])) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * @param string $log
-     * @param string $passwd
+     * @param string $password
      * @return User|null
      */
-    public static function login(string $log, string $passwd): ?User {
-        if($user = DAOUser::class->findByLoginPassword($log,$passwd)) {
+    public static function login(string $log, string $password): ?User {
+        $DAOUser = new DAOUser(SingletonDatabaseMariaDB::getInstance()->getCnx());
+        if($user = $DAOUser->findByLoginPassword($log,$password)) {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            $_SESSION['user'] = $user->getId();
+            $_SESSION['username'] = $user->getUsername();
+            $_SESSION['name'] = $user->getName();
+            $_SESSION['dateclosure'] = $user->getDateClosure();
             return $user;
         }
         return null;

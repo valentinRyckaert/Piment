@@ -13,10 +13,11 @@ class DefaultController extends BaseController {
     }
 
     public function index() : void {
-        if(Auth::is_logged())
+        if(Auth::is_logged()) {
             echo $this->renderer->render("Accueil");
-        else
-            $this->login();
+        } else {
+            header('Location: /login');
+        }
     }
 
     public function login() {
@@ -30,7 +31,8 @@ class DefaultController extends BaseController {
         if(!CsrfToken::checkToken(htmlspecialchars($_POST['csrf_token']))) {
             echo $this->renderer->render("SessionError");
         } else {
-            if($user = Auth::login(htmlspecialchars($_POST['login']),htmlspecialchars($_POST['passwd']))) {
+            if(Auth::login(htmlspecialchars($_POST['user']),htmlspecialchars($_POST['password']))) {
+                //header('Location: ');
                 $this->index();
             } else {
                 echo $this->renderer->render("SessionError");
@@ -40,9 +42,7 @@ class DefaultController extends BaseController {
 
     public function logout() {
         Auth::logout();
-        echo $this->renderer->render(
-            "Login",
-        );
+        header('Location: /login');
     }
 
 }
