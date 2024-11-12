@@ -8,15 +8,24 @@ use piment\models\DAOUser;
 class Auth
 {
     public static $KEY="Authv5.1";
-    public static $CANDELETE=1;
-    public static $CANUPDATE=2;
-    public static $CANREAD=4;
-    public static $CANCREATE=8;
+    public static $CANCREATEPOMPIER=1;
+    public static $CANREADPOMPIER=2;
+    public static $CANUPDATEPOMPIER=4;
+    public static $CANDELETEPOMPIER=8;
+    public static $CANCREATECASERNE=16;
+    public static $CANREADCASERNE=32;
+    public static $CANUPDATECASERNE=64;
+    public static $CANDELETECASERNE=128;
+    public static $CANCREATEROLE=256;
+    public static $CANREADROLE=512;
+    public static $CANUPDATEROLE=1024;
+    public static $CANDELETEROLE=2048;
 
     /**
      * @return bool
      */
     public static function is_logged(): bool {
+        Auth::startSession();
         if(isset($_SESSION['user'])) {
             return true;
         }
@@ -31,13 +40,13 @@ class Auth
     public static function login(string $log, string $password): ?User {
         $DAOUser = new DAOUser(SingletonDatabaseMariaDB::getInstance()->getCnx());
         if($user = $DAOUser->findByLoginPassword($log,$password)) {
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
+            Auth::startSession();
             $_SESSION['user'] = $user->getId();
             $_SESSION['username'] = $user->getUsername();
             $_SESSION['name'] = $user->getName();
             $_SESSION['dateclosure'] = $user->getDateClosure();
+            $_SESSION['role'] = $user->getRole();
+            $_SESSION['perms'] = $user->getRole()->getPermissions();
             return $user;
         }
         return null;
@@ -47,7 +56,7 @@ class Auth
      * @return void
      */
     public static function logout(): void {
-        session_destroy();
+        $_SESSION = [];
     }
 
     /**
@@ -55,7 +64,7 @@ class Auth
      * @return bool
      */
     public static function has(Role $role): bool {
-        return true;
+        return $role === $_SESSION['role'];
     }
 
     /**
@@ -63,7 +72,8 @@ class Auth
      * @return bool
      */
     public static function can(int $perm): bool {
-        return true;
+        Auth::startSession();
+        return $perm & $_SESSION['perms'];
     }
 
     /**
@@ -71,5 +81,11 @@ class Auth
      */
     public static function user(): User {
         return htmlspecialchars($_SESSION['user']);
+    }
+
+    private static function startSession() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 }

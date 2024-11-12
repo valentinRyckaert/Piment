@@ -2,7 +2,7 @@
 
 namespace piment\controllers;
 
-use App\models\User;
+use piment\models\User;
 use piment\utils\Auth;
 use piment\utils\CsrfToken;
 
@@ -43,6 +43,10 @@ class DefaultController extends BaseController {
     public function logout() {
         Auth::logout();
         header('Location: /login');
+    }
+
+    public function error() {
+        $this->renderer->render("404");
     }
 
 }

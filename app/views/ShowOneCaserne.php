@@ -1,6 +1,9 @@
-<?php require_once("_header.php"); ?>
+<?php
+require_once("_header.php");
+use \piment\utils\Auth;
+/** @var $oneCaserne \piment\models\Caserne */
+?>
 
-<?php /** @var $oneCaserne \piment\models\Caserne */ ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -26,8 +29,12 @@
                     </ul>
                 </div>
                 <div class="card-footer text-center">
-                    <button class="btn btn-primary col-3">Editer</button>
-                    <a href="/caserne/delete/<?= $oneCaserne->getNumCaserne() ?>"><button class="btn btn-danger col-3">Supprimer</button></a>
+                    <?php if(Auth::can(Auth::$CANUPDATECASERNE)) : ?>
+                        <button class="btn btn-primary col-3">Editer</button>
+                    <?php endif; ?>
+                    <?php if(Auth::can(Auth::$CANDELETECASERNE)) : ?>
+                        <a href="/caserne/delete/<?= $oneCaserne->getNumCaserne() ?>"><button class="btn btn-danger col-3">Supprimer</button></a>
+                    <?php endif; ?>
                     <a href="/caserne/show"><button class="btn btn-secondary col-3">Retour</button></a>
                 </div>
             </div>

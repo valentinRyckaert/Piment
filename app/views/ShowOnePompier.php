@@ -38,8 +38,12 @@
                     </ul>
                 </div>
                 <div class="card-footer text-center">
-                    <button class="btn btn-primary col-3">Editer</button>
-                    <a href="/pompier/delete/<?= $onePompier->getMatricule() ?>"><button class="btn btn-danger col-3">Supprimer</button></a>
+                    <?php if(Auth::can(Auth::$CANUPDATECASERNE)) : ?>
+                        <button class="btn btn-primary col-3">Editer</button>
+                    <?php endif; ?>
+                    <?php if(Auth::can(Auth::$CANDELETECASERNE)) : ?>
+                        <a href="/pompier/delete/<?= $onePompier->getMatricule() ?>"><button class="btn btn-danger col-3">Supprimer</button></a>
+                    <?php endif; ?>
                     <a href="/pompier/affiche"><button  type="submit" class="btn btn-secondary col-3">Retour</button></a>
                 </div>
             </div>
