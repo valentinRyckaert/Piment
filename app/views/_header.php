@@ -4,7 +4,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="<?= isset($_SESSION['user']) ? '/' : '#' ?>">
             <img src="/images/logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-middle">
             Piment
         </a>

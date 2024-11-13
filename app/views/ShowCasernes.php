@@ -1,11 +1,14 @@
 <?php require_once("_header.php"); ?>
+<?php use piment\utils\Auth; ?>
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Liste des Casernes</h1>
     <p class="text-center mb-5">Découvrez les casernes disponibles dans notre région. Cliquez sur "Détails" pour en savoir plus sur chaque caserne.</p>
-    <div class="text-center m-5">
-        <a href="/caserne/add/"><button class="btn btn-success">Ajouter une caserne</button></a>
-    </div>
+    <?php if(Auth::can(Auth::$CANCREATECASERNE)) : ?>
+        <div class="text-center m-5">
+            <a href="/caserne/add/"><button class="btn btn-success">Ajouter une caserne</button></a>
+        </div>
+    <?php endif; ?>
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-8">
@@ -28,12 +31,16 @@
                         <td class="justify-content-center">
                             <a href="/caserne/detail/<?= $laCaserne->getNumCaserne() ?>" class="btn btn-success">Détails</a>
                         </td>
-                        <td class="justify-content-center">
-                            <a href="#" class="btn btn-primary">éditer</a>
-                        </td>
-                        <td class="justify-content-center">
-                            <a href="/caserne/delete/<?= $laCaserne->getNumCaserne() ?>" class="btn btn-danger">Supprimer</a>
-                        </td>
+                    <?php if(Auth::can(Auth::$CANUPDATECASERNE)) : ?>
+                            <td class="justify-content-center">
+                                <a href="#" class="btn btn-primary">éditer</a>
+                            </td>
+                    <?php endif; ?>
+                    <?php if(Auth::can(Auth::$CANDELETECASERNE)) : ?>
+                            <td class="justify-content-center">
+                                <a href="/caserne/delete/<?= $laCaserne->getNumCaserne() ?>" class="btn btn-danger">Supprimer</a>
+                            </td>
+                    <?php endif; ?>
                     </tr>
                 <?php } ?>
                 </tbody>

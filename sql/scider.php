@@ -64,13 +64,19 @@ for($i = 1; $i <= 70; $i++){
 
 // Insert into role table
 $SQL = "INSERT INTO role (libelle, permissions) VALUES (:libelle, :permissions)";
-for ($i = 245; $i < 248; $i++) {
-    $stmt = $cnx->prepare($SQL);
-    $stmt->execute([
-        'libelle' => $faker->word(),
-        'permissions' => $faker->randomElement([4, 15])
-    ]);
-}
+$stmt = $cnx->prepare($SQL);
+$stmt->execute([
+    'libelle' => 'admin',
+    'permissions' => 4095
+]);
+$stmt->execute([
+    'libelle' => 'secretaire',
+    'permissions' => 255
+]);
+$stmt->execute([
+    'libelle' => 'consultant',
+    'permissions' => 34
+]);
 
 // Insert into profil table
 $SQL = "INSERT INTO profil (tel, email, datecreation, address) VALUES (:tel, :email, :datecreation, :address)";
@@ -88,13 +94,13 @@ for ($i = 245; $i < 248; $i++) {
 $SQL = "INSERT INTO user (login, passwdHash, name, username, status, dateclosure, profil_id, role_id) VALUES (:login, :passwdHash, :name, :username, :status, :dateclosure, :profil_id, :role_id)";
 $stmt = $cnx->prepare($SQL);
 $stmt->execute([
-    "login" => "consultant",
+    "login" => "admin",
     "passwdHash" => hash('sha256', "123+aze"),
     "name" => $faker->name(),
     "username" => $faker->userName(),
     "status" => 'active',
     "dateclosure" => $faker->date(),
-    "profil_id" => 1,
+    "profil_id" => 3,
     "role_id" => 1
 ]);
 $stmt->execute([
@@ -108,12 +114,12 @@ $stmt->execute([
     "role_id" => 2
 ]);
 $stmt->execute([
-    "login" => "admin",
+    "login" => "consultant",
     "passwdHash" => hash('sha256', "123+aze"),
     "name" => $faker->name(),
     "username" => $faker->userName(),
     "status" => 'active',
     "dateclosure" => $faker->date(),
-    "profil_id" => 3,
+    "profil_id" => 1,
     "role_id" => 3
 ]);

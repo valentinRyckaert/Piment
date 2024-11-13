@@ -23,6 +23,7 @@ class DAOUser extends DAO {
         $preparedStatement->bindValue(':password', hash('sha256',$password));
         $preparedStatement->execute();
         $data = $preparedStatement->fetchAll(\PDO::FETCH_ASSOC)[0];
+
         $user = new User();
         $user->setId($data['id']);
         $user->setLogin($data['login']);

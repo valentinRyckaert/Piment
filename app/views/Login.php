@@ -1,5 +1,5 @@
-<?php require_once('_header.php')
-/** @var $csrf_token string */ ?>
+<?php require_once('_header.php') ?>
+<?php /** @var $csrf_token string */ ?>
 
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 100px;">
