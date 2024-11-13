@@ -1,5 +1,4 @@
 <?php require_once("_header.php"); ?>
-<?php print_r($_SESSION) ?>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Bienvenue sur le Portail Piment</h1>
     <p class="text-center mb-5">Découvrez les casernes et les pompiers qui protègent notre communauté. Utilisez les boutons ci-dessous pour naviguer vers les sections correspondantes.</p>

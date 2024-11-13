@@ -37,3 +37,5 @@ Router::get('/caserne/delete/#', new CaserneController(), 'delete', Auth::$CANDE
 Router::get('/pompier/delete/#', new PompierController(), 'delete', Auth::$CANDELETEPOMPIER);
 Router::post('/caserne/delete', new CaserneController(), 'do_delete', Auth::$CANDELETECASERNE);
 Router::post('/pompier/delete', new PompierController(), 'do_delete', Auth::$CANDELETEPOMPIER);
+
+Router::get('?', new DefaultController(), 'not_found_404');

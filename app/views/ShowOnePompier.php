@@ -1,5 +1,4 @@
 <?php require_once("_header.php"); ?>
-
 <?php /** @var $onePompier \piment\models\Pompier */ ?>
 
 <div class="container mt-5">

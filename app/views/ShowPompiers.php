@@ -1,7 +1,5 @@
-<?php
-require_once("_header.php");
-use \piment\utils\Auth;
-?>
+<?php require_once("_header.php"); ?>
+<?php use \piment\utils\Auth; ?>
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Liste des Pompiers</h1>

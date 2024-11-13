@@ -2,7 +2,6 @@
 
 namespace piment\controllers;
 
-use piment\models\User;
 use piment\utils\Auth;
 use piment\utils\CsrfToken;
 
@@ -16,7 +15,7 @@ class DefaultController extends BaseController {
         if(Auth::is_logged()) {
             echo $this->renderer->render("Accueil");
         } else {
-            header('Location: /login');
+            $this->login();
         }
     }
 
@@ -32,7 +31,6 @@ class DefaultController extends BaseController {
             echo $this->renderer->render("SessionError");
         } else {
             if(Auth::login(htmlspecialchars($_POST['user']),htmlspecialchars($_POST['password']))) {
-                //header('Location: ');
                 $this->index();
             } else {
                 echo $this->renderer->render("SessionError");
@@ -42,11 +40,11 @@ class DefaultController extends BaseController {
 
     public function logout() {
         Auth::logout();
-        header('Location: /login');
+        $this->login();
     }
 
-    public function error() {
-        $this->renderer->render("404");
+    public function not_found_404() {
+        echo $this->renderer->render("notFound");
     }
 
 }

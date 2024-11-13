@@ -1,8 +1,6 @@
-<?php
-require_once("_header.php");
-use \piment\utils\Auth;
-/** @var $oneCaserne \piment\models\Caserne */
-?>
+<?php require_once("_header.php"); ?>
+<?php use piment\utils\Auth; ?>
+<?php /** @var $oneCaserne \piment\models\Caserne */ ?>
 
 
 <div class="container mt-5">

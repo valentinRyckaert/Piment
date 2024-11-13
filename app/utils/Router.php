@@ -19,14 +19,6 @@ class Router
 
     private static function _handleRequest($route_method, $route_path, $controller, $controllerMethod, $authorized) {
 
-        // if the user hasn't the perms in its role (stored in session), block route
-        if(isset($authorized)) {
-            if(!Auth::can($authorized)) {
-                $errorController = new DefaultController();
-                $errorController->error();
-            }
-        }
-
         $client_method = $_SERVER['REQUEST_METHOD'];
         $client_path = $_SERVER['REQUEST_URI'];
 
@@ -46,18 +38,34 @@ class Router
             return;
 
         } elseif ($client_path === $route_path) {
+            // if the user hasn't the perms in its role (stored in session), block route
+            if(isset($authorized)) {
+                if(!Auth::can($authorized)) {
+                    $errorController = new DefaultController();
+                    $errorController->not_found_404();
+                    return;
+                }
+            }
             $controller->$controllerMethod();
 
         } elseif (str_contains($route_path, "#")
             && array_slice(explode('/', $client_path), 0, -1)
             === array_slice(explode('/', $route_path), 0, -1)
         ) {
+            // if the user hasn't the perms in its role (stored in session), block route
+            if(isset($authorized)) {
+                if(!Auth::can($authorized)) {
+                    $errorController = new DefaultController();
+                    $errorController->not_found_404();
+                    return;
+                }
+            }
             $arguments = explode('/', $client_path);
             $arguments = end($arguments);
             $controller->$controllerMethod($arguments);
-        } else {
+        } elseif ($route_path === '?') {
             $errorController = new DefaultController();
-            $errorController->error();
+            $errorController->not_found_404();
         }
     }
 }
