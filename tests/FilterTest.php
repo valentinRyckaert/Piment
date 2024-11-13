@@ -8,7 +8,6 @@ use piment\utils\validators\PasswordValidator;
 use piment\utils\validators\MailValidator;
 use piment\utils\validators\PhoneValidator;
 use piment\utils\validators\CPValidator;
-#use PHPUnit\Framework\assertTrue;
 
 class FilterTest extends TestCase
 {
