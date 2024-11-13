@@ -6,3 +6,8 @@ config.ini
 reports/*
 logs/SQL.log
 logs/Auth.log
+/php-parse/
+/logs/
+/phpDocumentor.phar
+/.phpdoc/
+/docs/
