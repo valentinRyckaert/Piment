@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.4/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          cacheResultFile=".phpunit.cache/test-results"
          executionOrder="depends,defects"
-         forceCoversAnnotation="false"
-         beStrictAboutCoversAnnotation="false"
          beStrictAboutOutputDuringTests="true"
-         beStrictAboutTodoAnnotatedTests="false"
-         convertDeprecationsToExceptions="true"
          failOnRisky="false"
          failOnWarning="false"
-         verbose="true">
-    <testsuites>
+         cacheDirectory=".phpunit.cache">
 
+    <testsuites>
         <testsuite name="default">
             <directory>tests</directory>
         </testsuite>
-
-
         <testsuite name="validator">
-            <file>tests/PasswordVisitorTest.php</file>
+            <file>tests/PasswordValidatorTest.php</file>
         </testsuite>
-
-
     </testsuites>
-
-
-
-    <coverage cacheDirectory=".phpunit.cache/code-coverage"
-              processUncoveredFiles="true"
-              includeUncoveredFiles="true" >
+    <source>
         <include>
             <directory suffix=".php">app</directory>
         </include>
-    </coverage>
-
+    </source>
 </phpunit>

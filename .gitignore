@@ -11,3 +11,4 @@ logs/Auth.log
 /phpDocumentor.phar
 /.phpdoc/
 /docs/
+/cover-html/
