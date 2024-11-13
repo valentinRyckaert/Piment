@@ -61,3 +61,59 @@ for($i = 1; $i <= 70; $i++){
         "heure" => $faker->randomDigit()
     ));
 }
+
+// Insert into role table
+$SQL = "INSERT INTO role (libelle, permissions) VALUES (:libelle, :permissions)";
+for ($i = 245; $i < 248; $i++) {
+    $stmt = $cnx->prepare($SQL);
+    $stmt->execute([
+        'libelle' => $faker->word(),
+        'permissions' => $faker->randomElement([4, 15])
+    ]);
+}
+
+// Insert into profil table
+$SQL = "INSERT INTO profil (tel, email, datecreation, address) VALUES (:tel, :email, :datecreation, :address)";
+for ($i = 245; $i < 248; $i++) {
+    $stmt = $cnx->prepare($SQL);
+    $stmt->execute([
+        "tel" => $faker->phoneNumber(),
+        "email" => $faker->unique()->safeEmail(),
+        "datecreation" => $faker->dateTimeThisDecade->format('Y-m-d H:i:s'),
+        "address" => $faker->address()
+    ]);
+}
+
+// Insert into user table
+$SQL = "INSERT INTO user (login, passwdHash, name, username, status, dateclosure, profil_id, role_id) VALUES (:login, :passwdHash, :name, :username, :status, :dateclosure, :profil_id, :role_id)";
+$stmt = $cnx->prepare($SQL);
+$stmt->execute([
+    "login" => "consultant",
+    "passwdHash" => hash('sha256', "123+aze"),
+    "name" => $faker->name(),
+    "username" => $faker->userName(),
+    "status" => 'active',
+    "dateclosure" => $faker->date(),
+    "profil_id" => 1,
+    "role_id" => 1
+]);
+$stmt->execute([
+    "login" => "secretaire",
+    "passwdHash" => hash('sha256', "123+aze"),
+    "name" => $faker->name(),
+    "username" => $faker->userName(),
+    "status" => 'active',
+    "dateclosure" => $faker->date(),
+    "profil_id" => 2,
+    "role_id" => 2
+]);
+$stmt->execute([
+    "login" => "admin",
+    "passwdHash" => hash('sha256', "123+aze"),
+    "name" => $faker->name(),
+    "username" => $faker->userName(),
+    "status" => 'active',
+    "dateclosure" => $faker->date(),
+    "profil_id" => 3,
+    "role_id" => 3
+]);

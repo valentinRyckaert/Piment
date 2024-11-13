@@ -1,5 +1,5 @@
-<?php require_once("_header.php"); ?>
-<?php  /** @var $csrf_token string */ ?>
+<?php require_once("_header.php");
+/** @var $csrf_token string */ ?>
 
 <div class="container mt-5">
     <h2 class="mb-4">Créer une Caserne</h2>

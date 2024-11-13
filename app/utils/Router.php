@@ -1,6 +1,6 @@
 <?php
 
-namespace piment\controllers;
+namespace piment\utils;
 
 class Router
 {
