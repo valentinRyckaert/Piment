@@ -1,4 +1,7 @@
 [2024-11-04T15:36:13.067101+00:00] SQL.WARNING: SQL works [] []
+[2024-11-08T16:01:02.673328+00:00] SQL.WARNING: find all pompiers [] []
+[2024-11-08T16:03:12.550052+00:00] SQL.WARNING: find pompiers [] []
+[2024-11-08T16:03:16.513080+00:00] SQL.WARNING: find pompiers [] []
 [2024-11-04T16:07:45.215774+00:00] SQL.WARNING: find all casernes [] []
 [2024-11-04T16:08:05.057336+00:00] SQL.WARNING: find all pompiers [] []
 [2024-11-04T16:08:25.765501+00:00] SQL.WARNING: new in pompiers [] []
