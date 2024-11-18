@@ -63,9 +63,6 @@ class Router
             $arguments = explode('/', $client_path);
             $arguments = end($arguments);
             $controller->$controllerMethod($arguments);
-        } elseif ($route_path === '?') {
-            $errorController = new DefaultController();
-            $errorController->not_found_404();
         }
     }
 }

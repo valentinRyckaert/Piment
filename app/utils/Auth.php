@@ -16,10 +16,10 @@ class Auth
     public static $CANREADCASERNE=32;
     public static $CANUPDATECASERNE=64;
     public static $CANDELETECASERNE=128;
-    public static $CANCREATEROLE=256;
-    public static $CANREADROLE=512;
-    public static $CANUPDATEROLE=1024;
-    public static $CANDELETEROLE=2048;
+    public static $CANCREATEUSER=256;
+    public static $CANREADUSER=512;
+    public static $CANUPDATEUSER=1024;
+    public static $CANDELETEUSER=2048;
 
     /**
      * @return bool
@@ -41,12 +41,14 @@ class Auth
         $DAOUser = new DAOUser(SingletonDatabaseMariaDB::getInstance()->getCnx());
         if($user = $DAOUser->findByLoginPassword($log,$password)) {
             Auth::startSession();
-            $_SESSION['user'] = $user->getId();
-            $_SESSION['username'] = $user->getUsername();
-            $_SESSION['name'] = $user->getName();
-            $_SESSION['dateclosure'] = $user->getDateClosure();
-            $_SESSION['role'] = $user->getRole();
-            $_SESSION['perms'] = $user->getRole()->getPermissions();
+            $_SESSION['user'] = [
+                'id' => $user->getId(),
+                'username' => $user->getUsername(),
+                'name' => $user->getName(),
+                'dateclosure' => $user->getDateClosure(),
+                'role' => $user->getRole(),
+                'perms' => $user->getRole()->getPermissions()
+            ];
             return $user;
         }
         return null;
@@ -56,7 +58,7 @@ class Auth
      * @return void
      */
     public static function logout(): void {
-        $_SESSION = [];
+        unset($_SESSION['user']);
     }
 
     /**
@@ -64,7 +66,7 @@ class Auth
      * @return bool
      */
     public static function has(Role $role): bool {
-        return $role === $_SESSION['role'];
+        return $role == $_SESSION['user']['role'];
     }
 
     /**
@@ -73,14 +75,14 @@ class Auth
      */
     public static function can(int $perm): bool {
         Auth::startSession();
-        return $perm & $_SESSION['perms'];
+        return $perm & $_SESSION['user']['perms'];
     }
 
     /**
      * @return User
      */
     public static function user(): User {
-        return htmlspecialchars($_SESSION['user']);
+        return $_SESSION['user'];
     }
 
     private static function startSession() {
