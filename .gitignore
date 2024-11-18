@@ -14,3 +14,5 @@ logs/Auth.log
 /cover-html/
 /.phpunit.cache/
 /sonar/
+/.scannerwork/.sonar_lock
+/.scannerwork/report-task.txt
