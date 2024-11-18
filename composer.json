@@ -54,7 +54,7 @@
             "php phpDocumentor.phar run -d app -t docs"
             ],
         "cover" : [
-            "php -dxdebug.mode=coverage ./vendor/bin/phpunit --color=always --coverage-html cover-html tests ; exit 0"
+            "php -dxdebug.mode=coverage ./vendor/bin/phpunit --color=always --coverage-html cover-html --testsuite default ; exit 0"
         ]
     }
 }

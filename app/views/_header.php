@@ -14,26 +14,32 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/caserne/show" <?= isset($_SESSION['user']) ? '' : 'aria-disabled="true"' ?> >
+                    <a class="nav-link" <?= isset($_SESSION['user']) ? 'href="/caserne/show"' : 'href="#"' ?>>
                         Casernes
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/pompier/affiche" <?= isset($_SESSION['user']) ? '' : 'aria-disabled="true"' ?>>
+                    <a class="nav-link" <?= isset($_SESSION['user']) ? 'href="/pompier/affiche"' : 'href="#"' ?>>
                         Pompiers
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" <?= isset($_SESSION['user']) ? '' : 'aria-disabled="true"' ?>>
+                    <a class="nav-link disabled" href="#" tabindex="-1">
                         Grades
                     </a>
                 </li>
-                <?php /** @var $route string */ ?>
-                <form class="d-flex" role="search" action="/<?= isset($route) ? $route : null ?>/showspecific" method="get">
-                    <input class="form-control me-2" name="value" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-
+                <li class="nav-item">
+                    <?php /** @var $route string */ ?>
+                    <form class="d-flex <?= isset($_SESSION['user']) ? '' : 'disabled' ?>" role="search" action="/<?= isset($route) ? $route : null ?>/showspecific" method="get">
+                        <input class="form-control me-2" name="value" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </li>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <li class="nav-item">
+                        <a class="btn btn-warning" href="/logout">Logout</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
