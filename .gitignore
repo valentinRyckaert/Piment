@@ -12,3 +12,4 @@ logs/Auth.log
 /.phpdoc/
 /docs/
 /cover-html/
+/.phpunit.cache/
