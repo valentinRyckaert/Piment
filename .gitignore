@@ -13,3 +13,4 @@ logs/Auth.log
 /docs/
 /cover-html/
 /.phpunit.cache/
+/sonar/
