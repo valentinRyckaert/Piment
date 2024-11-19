@@ -2,6 +2,7 @@
 
 namespace piment\utils;
 
+use piment\models\DAORole;
 use piment\models\User;
 use piment\models\DAOUser;
 
@@ -39,6 +40,7 @@ class Auth
      */
     public static function login(string $log, string $password): ?User {
         $DAOUser = new DAOUser(SingletonDatabaseMariaDB::getInstance()->getCnx());
+        $DAORole = new DAORole(SingletonDatabaseMariaDB::getInstance()->getCnx());
         if($user = $DAOUser->findByLoginPassword($log,$password)) {
             Auth::startSession();
             $_SESSION['user'] = [
@@ -46,8 +48,8 @@ class Auth
                 'username' => $user->getUsername(),
                 'name' => $user->getName(),
                 'dateclosure' => $user->getDateClosure(),
-                'role' => $user->getRole(),
-                'perms' => $user->getRole()->getPermissions()
+                'role' => $user->getRole_id(),
+                'perms' => $DAORole->find($user->getRole_id())->getPermissions()
             ];
             return $user;
         }

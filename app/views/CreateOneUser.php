@@ -30,23 +30,11 @@
         </div>
         <div class="form-group">
             <label for="profil_id">Profil</label>
-            <select class="form-control" id="profil_id" name="profil_id">
-                <!-- Remplir avec les profils disponibles -->
-                <option value="">Sélectionner un profil</option>
-                <?php foreach ($profils as $profil) : ?>
-                    <option value="<?= $profil->getId() ?>"><?= $profil->getName() ?></option>
-                <?php endforeach; ?>
-            </select>
+            <input class="form-control" type="number" id="profil_id" name="profil_id">
         </div>
         <div class="form-group">
             <label for="role_id">Rôle</label>
-            <select class="form-control" id="role_id" name="role_id">
-                <!-- Remplir avec les rôles disponibles -->
-                <option value="">Sélectionner un rôle</option>
-                <?php foreach ($roles as $role) : ?>
-                    <option value="<?= $role->getId() ?>"><?= $role->getName() ?></option>
-                <?php endforeach; ?>
-            </select>
+            <input class="form-control" type="number" id="role_id" name="role_id">
         </div>
         <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
         <button type="submit" class="btn btn-success">Créer Utilisateur</button>

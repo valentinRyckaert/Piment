@@ -10,8 +10,8 @@ class User {
     private $username;
     private $status;
     private $dateClosure;
-    private Profil $profil;
-    private Role $role;
+    private $profil_id;
+    private $role_id;
 
 
     /**
@@ -126,23 +126,23 @@ class User {
         $this->dateClosure = $dateClosure;
     }
 
-    public function getProfil(): \piment\models\Profil
+    public function getProfil_id(): int
     {
-        return $this->profil;
+        return $this->profil_id;
     }
 
-    public function setProfil(\piment\models\Profil $profil): void
+    public function setProfil_id(int $profil): void
     {
-        $this->profil = $profil;
+        $this->profil_id = $profil;
     }
 
-    public function getRole(): \piment\models\Role
+    public function getRole_id(): int
     {
-        return $this->role;
+        return $this->role_id;
     }
 
-    public function setRole(\piment\models\Role $role): void
+    public function setRole_id(int $role): void
     {
-        $this->role = $role;
+        $this->role_id = $role;
     }
 }

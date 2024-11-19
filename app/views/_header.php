@@ -2,6 +2,7 @@
 <html lang="fr">
 <?php require_once("_styles.php"); ?>
 <body>
+<?php use piment\utils\Auth; ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?= isset($_SESSION['user']) ? '/' : '#' ?>">
@@ -23,11 +24,15 @@
                         Pompiers
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1">
-                        Grades
-                    </a>
-                </li>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <?php if(Auth::can(Auth::$CANREADUSER)) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/show">
+                                Users
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                <?php endif; ?>
                 <li class="nav-item">
                     <?php /** @var $route string */ ?>
                     <form class="d-flex <?= isset($_SESSION['user']) ? '' : 'disabled' ?>" role="search" action="/<?= isset($route) ? $route : null ?>/showspecific" method="get">

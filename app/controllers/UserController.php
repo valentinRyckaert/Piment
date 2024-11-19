@@ -2,7 +2,7 @@
 
 namespace piment\controllers;
 
-use App\models\User;
+use piment\models\User;
 use piment\models\DAOUser;
 
 class UserController extends BaseController {

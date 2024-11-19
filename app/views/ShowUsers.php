@@ -22,8 +22,8 @@
                 </thead>
                 <tbody>
                 <?php
-                /** @var $lesUtilisateurs array<\piment\models\User> */
-                foreach($lesUtilisateurs as $lUtilisateur) { ?>
+                /** @var $lesUsers array<\piment\models\User> */
+                foreach($lesUsers as $lUtilisateur) { ?>
                     <tr>
                         <th scope='row'><?= $lUtilisateur->getId() ?></th>
                         <td><?= $lUtilisateur->getUsername() ?></td>
