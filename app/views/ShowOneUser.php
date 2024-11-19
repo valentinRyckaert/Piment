@@ -38,9 +38,6 @@
                     </ul>
                 </div>
                 <div class="card-footer text-center">
-                    <?php if(Auth::can(Auth::$CANUPDATEUSER)) : ?>
-                        <button class="btn btn-primary col-3">Editer</button>
-                    <?php endif; ?>
                     <?php if(Auth::can(Auth::$CANDELETEUSER)) : ?>
                         <a href="/user/delete/<?= $oneUser->getId() ?>"><button class="btn btn-danger col-3">Supprimer</button></a>
                     <?php endif; ?>

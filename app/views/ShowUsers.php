@@ -31,11 +31,6 @@
                         <td class="justify-content-center">
                             <a href="/user/detail/<?= $lUtilisateur->getId() ?>" class="btn btn-success">Détails</a>
                         </td>
-                        <?php if(Auth::can(Auth::$CANUPDATEUSER)) : ?>
-                            <td class="justify-content-center">
-                                <a href="#" class="btn btn-primary">éditer</a>
-                            </td>
-                        <?php endif; ?>
                         <?php if(Auth::can(Auth::$CANDELETEUSER)) : ?>
                             <td class="justify-content-center">
                                 <a href="/user/delete/<?= $lUtilisateur->getId() ?>" class="btn btn-danger">Supprimer</a>
