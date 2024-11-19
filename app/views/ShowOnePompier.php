@@ -37,9 +37,6 @@
                     </ul>
                 </div>
                 <div class="card-footer text-center">
-                    <?php if(Auth::can(Auth::$CANUPDATECASERNE)) : ?>
-                        <button class="btn btn-primary col-3">Editer</button>
-                    <?php endif; ?>
                     <?php if(Auth::can(Auth::$CANDELETECASERNE)) : ?>
                         <a href="/pompier/delete/<?= $onePompier->getMatricule() ?>"><button class="btn btn-danger col-3">Supprimer</button></a>
                     <?php endif; ?>

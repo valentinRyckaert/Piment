@@ -33,11 +33,6 @@
                         <td class="justify-content-center">
                             <a href="/pompier/demo/<?= $lePompier->getMatricule() ?>" class="btn btn-success">Détails</a>
                         </td>
-                        <?php if(Auth::can(Auth::$CANUPDATEPOMPIER)) : ?>
-                            <td class="justify-content-center">
-                                <a href="#" class="btn btn-primary">éditer</a>
-                            </td>
-                        <?php endif; ?>
                         <?php if(Auth::can(Auth::$CANDELETEPOMPIER)) : ?>
                             <td class="justify-content-center">
                                 <a href="/pompier/delete/<?= $lePompier->getMatricule() ?>" class="btn btn-danger">Supprimer</a>

@@ -31,11 +31,6 @@
                         <td class="justify-content-center">
                             <a href="/caserne/detail/<?= $laCaserne->getNumCaserne() ?>" class="btn btn-success">Détails</a>
                         </td>
-                    <?php if(Auth::can(Auth::$CANUPDATECASERNE)) : ?>
-                            <td class="justify-content-center">
-                                <a href="#" class="btn btn-primary">éditer</a>
-                            </td>
-                    <?php endif; ?>
                     <?php if(Auth::can(Auth::$CANDELETECASERNE)) : ?>
                             <td class="justify-content-center">
                                 <a href="/caserne/delete/<?= $laCaserne->getNumCaserne() ?>" class="btn btn-danger">Supprimer</a>
