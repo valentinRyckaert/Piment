@@ -51,8 +51,10 @@ class Auth
                 'role' => $user->getRole_id(),
                 'perms' => $DAORole->find($user->getRole_id())->getPermissions()
             ];
+            SingletonLogger::getInstance()->getAuthlogger()->warning("login successful for user {$user->getLogin()}");
             return $user;
         }
+        SingletonLogger::getInstance()->getAuthlogger()->warning("login unsuccessful for user {$log}/{$password}");
         return null;
     }
 
@@ -61,6 +63,7 @@ class Auth
      */
     public static function logout(): void {
         Auth::startSessionIfNot();
+        SingletonLogger::getInstance()->getAuthlogger()->warning("logout {$_SESSION['user']['login']}");
         unset($_SESSION['user']);
     }
 
