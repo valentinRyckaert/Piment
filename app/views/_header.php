@@ -36,13 +36,13 @@
                 <li class="nav-item">
                     <?php /** @var $route string */ ?>
                     <form class="d-flex <?= isset($_SESSION['user']) ? '' : 'disabled' ?>" role="search" action="/<?= isset($route) ? $route : null ?>/showspecific" method="get">
-                        <input class="form-control me-2" name="value" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control" name="value" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </li>
                 <?php if (isset($_SESSION['user'])) : ?>
                     <li class="nav-item">
-                        <a class="btn btn-warning" href="/logout">Logout</a>
+                        <a class="btn btn-warning mx-2" href="/logout">Logout</a>
                     </li>
                 <?php endif; ?>
             </ul>

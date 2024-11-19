@@ -30,7 +30,7 @@ class DefaultController extends BaseController {
         if(!CsrfToken::checkToken(htmlspecialchars($_POST['csrf_token']))) {
             echo $this->renderer->render("SessionError");
         } else {
-            if(Auth::login(htmlspecialchars($_POST['user']),htmlspecialchars($_POST['password']))) {
+            if(Auth::login(htmlspecialchars($_POST['user']),htmlspecialchars($_POST['password'])) !== null) {
                 $this->index();
             } else {
                 echo $this->renderer->render("SessionError");

@@ -26,7 +26,7 @@ class Auth
      * @return bool
      */
     public static function is_logged(): bool {
-        Auth::startSession();
+        Auth::startSessionIfNot();
         if(isset($_SESSION['user'])) {
             return true;
         }
@@ -41,8 +41,8 @@ class Auth
     public static function login(string $log, string $password): ?User {
         $DAOUser = new DAOUser(SingletonDatabaseMariaDB::getInstance()->getCnx());
         $DAORole = new DAORole(SingletonDatabaseMariaDB::getInstance()->getCnx());
+        Auth::startSessionIfNot();
         if($user = $DAOUser->findByLoginPassword($log,$password)) {
-            Auth::startSession();
             $_SESSION['user'] = [
                 'id' => $user->getId(),
                 'username' => $user->getUsername(),
@@ -60,6 +60,7 @@ class Auth
      * @return void
      */
     public static function logout(): void {
+        Auth::startSessionIfNot();
         unset($_SESSION['user']);
     }
 
@@ -76,7 +77,7 @@ class Auth
      * @return bool
      */
     public static function can(int $perm): bool {
-        Auth::startSession();
+        Auth::startSessionIfNot();
         return $perm & $_SESSION['user']['perms'];
     }
 
@@ -87,7 +88,7 @@ class Auth
         return $_SESSION['user'];
     }
 
-    private static function startSession() {
+    private static function startSessionIfNot() {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
