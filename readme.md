@@ -10,14 +10,14 @@ composer install
 Se connecter à la base de données mariadb :
 ```bash
 mariadb -P 3306 -u root -p < ./sql/dump-pompiers.sql
+mariadb -P 3306 -u root -p < ./sql/migration_2024-11-06-0001.sql
 ```
-
 entrer le mot de passe root.
 
-## Scidation de la base de données
+## Seed de la base de données
 
 Executer le script php :
 ```bash
-php ./sql/scider.php 
+php ./sql/seeder.php 
 ```
 
